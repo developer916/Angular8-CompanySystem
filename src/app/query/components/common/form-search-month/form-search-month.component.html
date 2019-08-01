@@ -1,0 +1,20 @@
+<div class="form-search-month">
+  <mat-form-field>
+    <mat-label>Month</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.Month'"
+                [formControlName]="'month'">
+      <mat-option *ngFor="let month of ['January', 'February', 'March']" [value]="month" >{{month}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox [id]="'Session.OS.TM.QBETrainingCalendar.PreviousMonth'"
+                [disableRipple]="true"
+                [formControlName]="'previousMonth'">
+    Previous Month
+  </mat-checkbox>
+  <mat-checkbox [id]="'Session.OS.TM.QBETrainingCalendar.NextMonth'"
+                [disableRipple]="true"
+                [formControlName]="'nextMonth'">
+    Next Month
+  </mat-checkbox>
+</div>

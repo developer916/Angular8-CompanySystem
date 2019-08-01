@@ -1,0 +1,10 @@
+<div class="form-hydrant-group">
+  <mat-form-field>
+    <mat-label>Hydrant Group</mat-label>
+    <mat-select
+                [id]="'Session.OS.IM.QBEHydrantInspectionRecord.Group'"
+                [formControlName]="'hydrantGroup'">
+      <mat-option *ngFor="let hydrantGroup of ['Value 1', 'Value 2', 'Value 3']" [value]="hydrantGroup">{{hydrantGroup}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

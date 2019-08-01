@@ -1,0 +1,75 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Controlled Substance Inventory Incidents</mat-card-title>
+    <mat-card-content style="margin-top: 10px">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!-- Unit Maintenance # Column -->
+          <ng-container cdkColumnDef="unitMaintenanceNumber">
+            <mat-header-cell *cdkHeaderCellDef>Unit Maintenance #</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span class="detailLink"
+                                                  (click)="showIncidentDetail(row.id)">{{row.unitMaintenanceNumber}}</span>
+            </mat-cell>
+          </ng-container>
+
+          <!--Unit Column -->
+          <ng-container cdkColumnDef="unit">
+            <mat-header-cell *cdkHeaderCellDef>Unit</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.unit}}</mat-cell>
+          </ng-container>
+
+          <!-- Date  Column -->
+          <ng-container cdkColumnDef="date">
+            <mat-header-cell *cdkHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.date}}</mat-cell>
+          </ng-container>
+
+          <!-- Compliance Column -->
+          <ng-container cdkColumnDef="compliance">
+            <mat-header-cell *cdkHeaderCellDef>Compliance</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.compliance}}</mat-cell>
+          </ng-container>
+
+          <!--Accountability Column -->
+          <ng-container cdkColumnDef="accountability">
+            <mat-header-cell *cdkHeaderCellDef>Accountability</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.accountability}}</mat-cell>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container cdkColumnDef="status">
+            <mat-header-cell *cdkHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.status}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!-- Added Button along the bottom of page -->
+        <mat-card-actions style="margin-bottom: 15px;">
+          <div>
+            <button type="button" mat-raised-button>Save</button>
+          </div>
+
+        </mat-card-actions>
+
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+</div>

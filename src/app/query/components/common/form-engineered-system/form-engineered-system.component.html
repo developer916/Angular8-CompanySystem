@@ -1,0 +1,19 @@
+<div class="form-engineered-system">
+  <mat-form-field>
+    <mat-label>Engineered System</mat-label>
+    <input matInput
+           [id]="'Session.OS.PM.QBEOccupancyStructureSystem.EngineeredSystem'"
+           [formControlName]="'engineeredSystem'">
+  </mat-form-field>
+  <mat-checkbox [id]="'Session.OS.PM.QBEOccupancyStructureSystem.HoodDuct'"
+                [disableRipple]="true"
+                [formControlName]="'hoodDuct'">
+    Hood Duct
+  </mat-checkbox>
+  <mat-checkbox [id]="'Session.OS.PM.QBEOccupancyStructureSystem.SprayBooth'"
+                [disableRipple]="true"
+                [formControlName]="'sprayBooth'">
+    Spray Booth (Overrides all other System Types)
+  </mat-checkbox>
+
+</div>

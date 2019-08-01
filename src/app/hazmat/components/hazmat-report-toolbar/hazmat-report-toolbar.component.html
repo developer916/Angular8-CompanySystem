@@ -1,0 +1,14 @@
+<mat-toolbar class="toolbar">
+  <button class="toolbar-button" type="button" mat-icon-button (click)="back()">
+    <mat-icon matTooltip="Back">arrow_back</mat-icon>
+  </button>
+  <!--<button class="toolbar-button" type="submit" [disabled]="!formGroup.valid" mat-icon-button (click)="save()">-->
+  <button class="toolbar-button" type="submit" mat-icon-button (click)="save()">
+    <mat-icon matTooltip="Save">save</mat-icon>
+  </button>
+  <button class="toolbar-button" type="button" mat-icon-button (click)="print()">
+    <mat-icon matTooltip="Print">print</mat-icon>
+  </button>
+
+  <!-- <span class="toolbar-content-right" style="padding-top: 2px;">{{getActiveIncidentLabel()}}</span> -->
+</mat-toolbar>

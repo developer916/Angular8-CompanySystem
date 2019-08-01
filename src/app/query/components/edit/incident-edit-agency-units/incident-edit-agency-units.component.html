@@ -1,0 +1,110 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Edit Agency Units</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Unit Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="ID"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.UnitID'"
+                   [formControlName]="'unitID'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Name"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.Name'"
+                   [formControlName]="'name'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Use"
+                        [id]="'Session.OS.AM.QBEAgencyUnits.Use'"
+                        [formControlName]="'use'" >
+              <mat-option *ngFor="let use of ['A', 'B', 'C']" [value]="use">{{use}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Type"
+                        [id]="'Session.OS.AM.QBEAgencyUnits.Type'"
+                        [formControlName]="'type'" >
+              <mat-option *ngFor="let type of ['A', 'B', 'C']" [value]="type" >{{type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Unit Contact</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Phone"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.Phone'"
+                   [formControlName]="'phone'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Fax"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.Fax'"
+                   [formControlName]="'fax'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Pager"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.Pager'"
+                   [formControlName]="'pager'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Email"
+                   [id]="'Session.OS.AM.QBEAgencyUnits.Email'"
+                   [formControlName]="'email'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Unit Options</h3>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.AutoNarrative'"
+                          [disableRipple]="true"
+                          [formControlName]="'autoNarrative'" >
+              Auto Narrative
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.NonAgencyUnit'"
+                        [disableRipple]="true"
+                        [formControlName]="'nonAgencyUnit'" >
+            Non Agency Unit
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.NonReportingUnit'"
+                        [disableRipple]="true"
+                        [formControlName]="'nonReportingUnit'" >
+            Non Reporting Unit
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.MedicUnit'"
+                        [disableRipple]="true"
+                        [formControlName]="'medicUnit'" >
+            Medic Unit
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.PublicAssist'"
+                        [disableRipple]="true"
+                        [formControlName]="'publicAssist'" >
+            Public Assist
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyUnits.NonTraining'"
+                        [disableRipple]="true"
+                        [formControlName]="'nonTraining'" >
+            Non-Training
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

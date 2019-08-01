@@ -1,0 +1,10 @@
+<div class="form-search-gender">
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyPersonnel.Gender'"
+                [formControlName]="'gender'" >
+      <mat-option *ngFor="let gender of ['Male', 'Female', 'Other']" [value]="gender" >{{gender}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

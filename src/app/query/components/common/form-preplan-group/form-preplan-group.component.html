@@ -1,0 +1,10 @@
+<div class="form-preplan-group">
+  <mat-form-field>
+    <mat-label>Pre-Plan Group</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Group'"
+                [formControlName]="'group'">
+      <mat-option *ngFor="let group of ['Group 1', 'Group 2', 'Group 3']" [value]="group">{{group}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

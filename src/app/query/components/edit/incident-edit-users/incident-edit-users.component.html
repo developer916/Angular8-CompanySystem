@@ -1,0 +1,131 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Edit User Information</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>User Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="User ID"
+                   [id]="'Session.OS.AM.QBEUsers.UserID'"
+                   [formControlName]="'userID'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="First Name"
+                   [id]="'Session.OS.AM.QBEUsers.FirstName'"
+                   [formControlName]="'firstName'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="M"
+                   [id]="'Session.OS.AM.QBEUsers.MiddleInitial'"
+                   [formControlName]="'middleInitial'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Last Name"
+                   [id]="'Session.OS.AM.QBEUsers.LastName'"
+                   [formControlName]="'lastName'"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="Suffix"
+                        [id]="'Session.OS.AM.QBEUsers.Suffix'"
+                        [formControlName]="'suffix'">
+              <mat-option *ngFor="let suffix of ['Mr.', 'Mrs.', 'Ms.']" [value]="suffix">{{suffix}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Rank"
+                        [id]="'Session.OS.AM.QBEUsers.Rank'"
+                        [formControlName]="'rank'">
+              <mat-option *ngFor="let rank of ['Chief', 'Captain', 'Admin']" [value]="rank">{{rank}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="or Title"
+                   [id]="'Session.OS.AM.QBEUsers.Title'"
+                   [formControlName]="'title'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Personnel Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Personnel ID"
+                   [id]="'Session.OS.AM.QBEUsers.PersonnelID'"
+                   [formControlName]="'personnelID'"/>
+          </mat-form-field>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.PersonnelUserID'"
+                        [disableRipple]="true"
+                        [formControlName]="'personnelUserID'">
+            Personnel ID same as User ID
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Agency Personnel List</h3>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.PersonnelList'"
+                        [disableRipple]="true"
+                        [formControlName]="'personnelList'">
+            Add User to Personnel List
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Security Group</h3>
+          <mat-form-field>
+            <mat-select placeholder="Group Name"
+                        [id]="'Session.OS.AM.QBEUsers.GroupName'"
+                        [formControlName]="'groupName'">
+              <mat-option *ngFor="let groupName of ['Unit', 'Captain', 'Admin']" [value]="groupName">{{groupName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr styel="clear:both">
+        <div>
+          <h3>Security Privileges</h3>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.Administrator'"
+                        [disableRipple]="true"
+                        [formControlName]="'administrator'">
+            Administrator
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.ReportBuilder'"
+                        [disableRipple]="true"
+                        [formControlName]="'reportBuilder'">
+            Report Builder
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.AccessEncryptedData'"
+                        [disableRipple]="true"
+                        [formControlName]="'accessEncryptedData'">
+            Access Encrypted Data
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Password</h3>
+          <mat-checkbox [id]="'Session.OS.AM.QBEUsers.ResetPassword'"
+                        [disableRipple]="true"
+                        [formControlName]="'resetPassword'">
+            Reset Password (onetime)
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

@@ -1,0 +1,815 @@
+# Always On Scene GraphQL Query API.  Drill down to see the different queries
+type Query {
+
+    # Lookups
+    lookups : [Lookup]!
+
+    lookup(name: String) : Lookup
+
+    lookupsForType(type: String, chaseReferences: Boolean) : [Lookup]!
+
+    lookupProfile(profile: String) : [Lookup]!
+
+    # Stations
+    stations(stationId: String) : [AMAgencyStationResource]!
+
+    reviewIncidents(
+        beginDateTime: String,
+        endDateTime: String,
+        lastXDays: Int,
+        unitIds: String,
+        stationId: String,
+        battalion: String,
+        division: String,
+        incidentNumber: String,
+        exposureNumber: String,
+        year: Int,
+        incidentTypeCode: String,
+        personnelId: String,
+        reviewStatus: String,
+        rowCount: Int): [IMIncidentReportResource]!
+
+    publicIncidents(
+        beginDateTime: String,
+        endDateTime: String,
+        lastXDays: Int,
+        incidentAddress: String,
+        city: String,
+        zipCode: String,
+        firstName: String,
+        lastName: String,
+        licensePlate: String,
+        licenseNumber: String,
+        incidentNumber: String,
+        exposureNumber: String,
+        year: Int,
+        rowCount: Int): [IMIncidentReportResource]!
+
+    # Jason - Add only the fields that are on the query page
+    hazmatUnitOperations(
+        beginDateTime: String,
+        endDateTime: String,
+        lastXDays: Int,
+        incidentNumber: String,
+        exposureNumber: String,
+        year: Int,
+        unitIds: String,
+        personnelId: String,
+        chemicalName: String,
+        dotClassificationCode: String,
+        chemicalBeginsWith: String,
+        containerTypeCode: String,
+        unNumber: Int,
+        incidentAddress: String,
+        city: String,
+        status: String,
+        rowCount: Int): [IMIncidentReportResource]!
+
+
+    ## Incident stuff ##
+    # General purpose query for incidents.
+    # The only assumption if null is passed is a configured rowCount
+    # Date format is  "mm/dd/YYYY HH:MM:SS.sss"
+      incidents(
+        beginDateTime: String,
+        endDateTime: String,
+        lastXDays: Int,
+        unitIds: String, #Comma delimited unitIDs that if sent, will union w/ those derived by station, battlation, division, if those are set
+        stationId: String,
+        battalion: String,
+        division: String,
+        incidentNumber: String,
+        exposureNumber: String,
+        year: Int,
+        useMyLogin: Boolean,
+        personnelId: String,
+        incidentAddress: String,
+        city: String,
+        status: String,
+        shift: String,
+        filterLastUnitCleared: Boolean,
+        filterAutoClose: Boolean,
+        rowCount: Int): [IMIncidentReportResource]!
+
+    # Simplified query that assumes...
+    # configured lastXDays lookback or begin/end time window based on application.yml
+    # State == Open
+    # LastClearedUnit is NOT set
+    # Date format is  "mm/dd/YYYY HH:MM:SS.sss"
+       currentIncidents(
+        lastXDays: Int,
+        beginDateTime: String,
+        endDateTime: String,
+        useMyLogin: Boolean,
+        personnelId: String,
+        rowCount: Int): [IMIncidentReportResource]!
+
+    # Query for unit information
+      units(
+        unitId: String,
+        unitTypeCode: String,
+        unitUseCode: String): [AMAgencyUnitResource]!
+
+    # Query for personnel information
+      personnel(
+        personnelId: String,
+        firstName: String,
+        lastName: String,
+        genderCode: String,
+        rank: String,
+        paramedicFlag: Boolean,
+        emtFlag: Boolean,
+        patientChartReviewerFlag: Boolean,
+        recruitFlag: Boolean,
+        newDriverOperatorFlag: Boolean): [AMAgencyPersonnelResource]!
+
+    ## EMS stuff ##
+    # Query for patient information
+      patients(
+        incidentHashedId: String,
+        incidentNumber: String,
+        exposureNumber: String,
+        agencyIncidentNumber: String,
+        agencyExposureNumber: String,
+        patientAddress: String,
+        city: String,
+        firstName: String,
+        middleInitial: String,
+        lastName: String,
+        boroughCode: String,
+        beginBirthDate: String,
+        endBirthDate: String,
+        providerInChargePersonnelId: String,
+        unitContactByPersonnelId: String,
+        partnerPersonnelId: String,
+        traumaSystem: String,
+        primaryImpressionCode: String,
+        secondaryImpressionCode: String,
+        thirdImpressionCode: String,
+        pcrNumber: String,
+        procedureTypeCode: String,
+        chiefComplaintCode: String,
+        dispositionCode: String,
+        drugNameCode: String,
+        precipitatingMedicalEventCode: String,
+        procedureByPersonnelId: String,
+        status: String,
+        year: Int,
+        beginDateTime: String,
+        endDateTime: String,
+        rowCount: Int):  [EMPatientReportResource]!
+
+      scene(idHash: String): EMSceneResource
+}
+
+type Link {
+  rel: String,
+  href: String
+}
+
+type LookupEntry {
+    code: String,
+    description: String
+}
+
+type Lookup {
+  name:   String
+  values: [LookupEntry]!
+}
+
+# Embedded
+type StreetAddressNoApt {
+    numberOrMile: String,
+    streetPrefix: String,
+    streetHighway: String,
+    streetType: String,
+    streetSuffix: String,
+    addressText: String
+}
+
+type StreetAddress {
+    numberOrMile: String,
+    streetPrefix: String,
+    streetHighway: String,
+    streetType: String,
+    streetSuffix: String,
+    apartment: String,
+    addressText: String
+}
+
+# Station type def
+type AMAgencyStation {
+    idHash: String,
+    stationId: String,
+    auditUserId: String,
+    auditUserName: String,
+    auditSession: String,
+    auditDateTime: String,
+    stationName: String,
+    addressLine1: String,
+    addressLine2: String,
+    city: String,
+    county: String,
+    state: String,
+    province: String,
+    region: String,
+    zipCode: String,
+    postalCode: String,
+    country: String,
+    gpslocation: String,
+    phone: String,
+    fax: String,
+    email: String
+}
+
+type AMAgencyStationResource {
+  content: AMAgencyStation!,
+  links: [Link]!
+}
+
+# Begin Incident types
+# CAD Report
+type CMIncidentStandard {
+     incidentNumber: String,
+     exposureNumber: String,
+     caseNumber: String,
+     multiAgencyIncidentNumber: String,
+     majorIncidentName: String,
+     mutualAidFlag: Boolean,
+     relatedFireIncidentNumber: String,
+     relatedEmsincidentNumber: String,
+     relatedPoliceIncidentNumber: String,
+     relatedSheriffIncidentNumber: String,
+     highSideOfStreetNumberRange: String,
+     addressNumber: String,
+     streetDirectionPrefix: String,
+     streetName: String,
+     streetType: String,
+     streetDirectionSuffix: String,
+     buildingNumber: String,
+     apartmentNumber: String,
+     crossStreetDirectionPrefix: String,
+     crossStreetName: String,
+     crossStreetType: String,
+     crossStreetDirectionSuffix: String,
+     cityCode: String,
+     city: String,
+     state: String,
+     county: String,
+     province: String,
+     region: String,
+     zipCode: String,
+     postalCode: String,
+     country: String,
+     commonPlaceName: String,
+     cadIncidentType: String,
+     initialCadIncidentType: String,
+     finalCadIncidentType: String,
+     initialAlarmLevel: String,
+     finalAlarmLevel: String,
+     disposition: String,
+     situationFoundComment: String,
+     preArrival: String,
+     callReceivedDateTime: String,
+     entryDateTime: String,
+     dispatchDateTime: String,
+     enrouteDateTime: String,
+     onsceneDateTime: String,
+     transportDateTime: String,
+     transportCompleteDateTime: String,
+     closeDateTime: String,
+     secondAlarmDateTime: String,
+     thirdAlarmDateTime: String,
+     ambulanceRequestDateTime: String,
+     ambulanceArrivalDateTime: String,
+     incidentUnderControlDateTime: String,
+     numberOfAmbulancesRequested: Int,
+     numberOfAmbulancesDispatched: Int,
+     alarmMethod: String,
+     priority: String,
+     responseLevel: String,
+     firstInUnitId: String,
+     firstDueUnitId: String,
+     responsibleUnitId: String,
+     station: String,
+     battalion: String,
+     division: String,
+     shift: String,
+     commandArea: String,
+     fireManagementZone: String,
+     dispatchZone: String,
+     censusTractId: String,
+     countyMapId: String,
+     thomasBrothersMap: String,
+     fireMapPage: String,
+     district: String,
+     hospitalId: String,
+     longitude: String,
+     latitude: String,
+     gpslocation: String,
+     highwayZone: String,
+     callSource: String,
+     nameReportingIncident: String,
+     addressReportingIncident: String,
+     phoneNumberReportingIncident: String,
+     callerDescriptionComment: String,
+     dispatcherId: String,
+     dispatcherTerminalId: String,
+     policeFireComment: String,
+     administrativeComment: String,
+     dispatcherNarrativeText: String,
+     floor: String,
+     policeBeat: String,
+     relatedEmsagencyName: String,
+     relatedFireAgencyName: String,
+     relatedPoliceAgencyName: String,
+     relatedSheriffAgencyName: String,
+     xcoordinate: String,
+     ycoordinate: String,
+     eventIncidentNumber: String,
+     density: String,
+     secondDispatcherId: String,
+     secondDispatcherTerminalId: String,
+     addressIdentificationNumber: String,
+     prePlanNumber: String,
+     emddeterminantDateTime: String,
+     directions: String
+}
+
+# IMIncidentData inherited IMIncident core
+type BasicResponse {
+    incidentTypeCode: String,
+    incidentTypeDesc: String,
+    exposureNumber: String,
+    specialHazMatFlag: Boolean,
+    specialArsonFlag: Boolean,
+    alarmDateTime: String,
+    incidentDateTime: String,
+    shift: String,
+    status: String,
+    alarmsCount: Int,
+    station: String,
+    districtCode: String,
+    districtDesc: String,
+    emsProvidedFlag: Boolean,
+    casualtiesFlag: Boolean,
+    locationTypeCode: String,
+    locationTypeDesc: String,
+    streetAddress: StreetAddress,
+    addressIdentificationNumber: String,
+    city: String,
+    county: String,
+    state: String,
+    zipCode: String,
+    directions: String,
+    township: String,
+    latitude: Float,
+    longitude: Float,
+    actionTaken1Code: String,
+    actionTaken1Desc: String,
+    actionTaken2Code: String,
+    actionTaken2Desc: String,
+    actionTaken3Code: String,
+    actionTaken3Desc: String
+}
+
+type BasicSummary {
+    officerPersonnelId: String,
+    officerFirstName: String,
+    officerMiddleInitial: String,
+    officerLastName: String,
+    officerNameSuffix: String,
+    officerRank: String,
+    officerAssignmentCode: String,
+    officerAssignmentDesc: String
+}
+
+type IMPersonInvolved {
+    idHash: String,
+    ownerPersonCode: String,
+    ownerPersonDesc: String,
+    ownerPersonFlag: Boolean,
+    namePrefix: String,
+    firstName: String,
+    middleInitial: String,
+    lastName: String,
+    nameSuffix: String,
+    businessInvolvedFlag: Boolean,
+    businessName: String,
+    phone: String,
+    mobilePhone: String,
+    email: String,
+    sameAddressAsIncidentLocationFlag: Boolean,
+    streetAddress: StreetAddress,
+    city: String,
+    state: String,
+    province: String,
+    region: String,
+    pobox: String,
+    zipCode: String,
+    postalCode: String,
+    country: String,
+    gpslocation: String,
+    reasonResponsible: String,
+    responsibleFlag: Boolean,
+    machineOperated: String,
+    licenseType: String,
+    licenseNumber: String,
+    licenseRequiredFlag: Boolean,
+    licensePlate: String,
+    licenseState: String,
+    trailerPlate: String,
+    trailerState: String,
+    vehicleVin: String
+ }
+
+type IMPersonInvolvedResource {
+  content: IMPersonInvolved!,
+  links: [Link]!
+}
+
+type IMIncidentReport {
+    idHash: String,
+    incidentNumber: String,
+    createUserID: String,
+    createUserName: String,
+    createSession: String,
+    createDateTime: String,
+    closedUserID: String,
+    closedUserName: String,
+    closedSession: String,
+    closedDateTime: String,
+    nFIRSVendorID: String,
+    nFIRSVersion: String,
+    agencyIncidentNumber: String,
+    agencyExposureNumber: String,
+    fireBox: String,
+    didNotArriveFlag: Boolean,
+    lastUnitClearedDateTime: String,
+    workingFireDateTime: String,
+    workingFireTransmittedBy: String,
+    workingFireTransmittedByUnit: String,
+    allHandsDateTime: String,
+    allHandsTransmittedBy: String,
+    allHandsTransmittedByUnit: String,
+    doubtfulDateTime: String,
+    doubtfulTransmittedBy: String,
+    doubtfulTransmittedByUnit: String,
+    probablyWillHoldDateTime: String,
+    probablyWillHoldTransmittedBy: String,
+    probablyWillHoldTransmittedByUnit: String,
+    underControlDateTime: String,
+    underControlTransmittedBy: String,
+    underControlTransmittedByUnit: String,
+    totalIncidentDuration: String,
+    totalTransmittedBy: String,
+    totalTransmittedByUnit: String,
+    notifyFireMarshalDateTime: String,
+    notifyFireMarshalTransmittedBy: String,
+    notifyFireMarshalTransmittedByUnit: String,
+    includeMutualAidFlag: Boolean,
+    publicReleaseFlag: Boolean,
+    priorityResponseFlag: Boolean,
+    reviewerPersonnelID: String,
+    reviewerFirstName: String,
+    reviewerMiddleInitial: String,
+    reviewerLastName: String,
+    reviewerNameSuffix: String,
+    reviewerRank: String,
+    reviewerAssignmentCode: String,
+    reviewerAssignmentDesc: String,
+    reviewerDate: String,
+    administrationCompany: String,
+    communityBoard: String,
+    specialIncidentFlag: Boolean,
+    initialLevelCode: String,
+    initialLevelDesc: String,
+    highestLevelCode: String,
+    highestLevelDesc: String,
+    precinct: String,
+    reportedByCode: String,
+    reportedByDesc: String,
+    leftInCharge: String,
+    evacuatedCount: String,
+    boroughCode: String,
+    boroughDesc: String,
+    floor: String,
+    coDetectorPowerSupplyCode: String,
+    coDetectorPowerSupplyDesc: String,
+    coDetectorEffectivenessCode: String,
+    coDetectorEffectivenessDesc: String,
+    coDetectorPresentCode: String,
+    coDetectorPresentDesc: String,
+    radioSignal: String,
+    fireServiceInjuryFlag: Boolean,
+    hazMatRadioSignal: String,
+    elevatorNumber: String,
+    elevatorLocationComment: String,
+    ward: String,
+    buildingIdentificationNumber: String,
+    receivedEntryDuration: Int,
+    entryAlarmDuration: Int,
+    receivedAlarmDuration: Int,
+    receivedArrivalDuration: Int,
+    alarmArrivalDuration: Int,
+    dispatchArrivalDuration: Int,
+    enrouteArrivalDuration: Int,
+    rescuedCount: Int,
+    entryArrivalDuration: Int,
+    enrouteDateTime: String,
+    dispatchEnrouteDuration: Int,
+    receivedAllHandsDuration: Int,
+    autoClosedFlag: Boolean,
+    occupancyNumber: String,
+    maydayGivenCode: String,
+    maydayGivenDesc: String,
+    prePlanNumber: String,
+    correctedDateTime: String,
+    correctedByPersonnelID: String,
+    correctedByFirstName: String,
+    correctedByMiddleInitial: String,
+    correctedByLastName: String,
+    correctedByNameSuffix: String,
+    correctedByRank: String,
+    correctedReasonComment: String,
+    reviewerNarrativeText: String,
+    pulsePointAlertCode: String,
+    pulsePointAlertDesc: String,
+    # Embedded objects
+    response: BasicResponse!,
+    summary: BasicSummary!,
+    cadSummary: CMIncidentStandard,
+    # Related entities not supported so we can use the faster StoredProcedure
+    # personsInvolved: [IMPersonInvolved]!, e.g. IMIncidentReport vs. IMIncident
+    units: [IMUnit],
+    inputForms: [IMInputFormHeader]
+}
+
+type IMIncidentReportResource {
+  content: IMIncidentReport!,
+  links: [Link]!
+}
+
+
+type IMInputFormHeader {
+  idHash: String,
+  status: String,
+  headerType: String,
+  headerTitle: String,
+  inputFormHazMatUnitOperation: InputFormHazMatUnitOperation
+}
+
+type InputFormHazMatUnitOperation {
+  unitId: String,
+  reportByPersonnelId: Int,
+  reportByFirstName: String,
+  reportByMiddleInitial: String,
+  reportByLastName: String,
+  reportByNameSuffix: String,
+  reportByRank: String
+}
+
+type ResourcesUnit {
+    unitId: String,
+    unitName: String,
+    enrouteDateTime: String,
+    clearDateTime: String,
+    dispatchDateTime: String,
+    enrouteFacilityDateTime: String,
+    arrivedFacilityDateTime: String,
+    arrivedAtPatientSideDateTime: String,
+    unitUseCode: String,
+    unitUseDesc: String,
+    unitTypeCode: String,
+    unitTypeDesc: String,
+    priorityEnrouteCode: String,
+    priorityEnrouteDesc: String,
+    priorityArrivalCode: String,
+    priorityArrivalDesc: String,
+    actionTaken1Code: String,
+    actionTaken1Desc: String
+}
+
+type IMUnit {
+    idHash: String,
+    availableOnEventDateTime: String,
+    gpslocation: String,
+    dispatchLatitude: String,
+    dispatchLongitude: String,
+    enrouteLatitude: String,
+    enrouteLongitude: String,
+    unit: ResourcesUnit!,
+    narrative: ResourcesNarrative
+}
+
+type ResourcesNarrative {
+	assignmentCode: String,
+    assignmentDesc: String,
+    responsibleFullReportFlag: Boolean,
+    unitReportByPersonnelId: String,
+    unitReportByFirstName: String,
+    unitReportByMiddleInitial: String,
+    unitReportByLastName: String,
+    unitReportByNameSuffix: String,
+    unitReportByRank: String,
+    authorityDate: String,
+    mutualAidUnitFlag: Boolean,
+    noReportFlag: Boolean,
+    narrativeText: String
+}
+
+type IMUnitResource {
+  content: IMUnit!,
+  links: [Link]!
+}
+
+type AMAgencyUnit {
+    idHash: String,
+    beginActiveDateTime: String,
+    endActiveDateTime: String,
+    enteredServiceDate: String,
+    phone: String,
+    email: String,
+    fax: String,
+    pager: String,
+    unitId: String,
+    unitName: String,
+    unitTypeCode: String,
+    unitTypeDesc: String,
+    unitUseCode: String,
+    unitUseDesc: String,
+    medicUnitFlag: Boolean,
+    nonAgencyUnitFlag: Boolean,
+    nonTrainingFlag: Boolean,
+    publicAssistUnitFlag: Boolean,
+    autoUnitNarrativeFlag: Boolean,
+    nonReportingUnitFlag: Boolean
+}
+
+type AMAgencyUnitResource {
+  content: AMAgencyUnit!,
+  links: [Link]!
+}
+
+type AMAgencyPersonnel {
+    idHash: String,
+    auditUserName: String,
+    auditSession: String,
+    auditDateTime: String,
+    beginActiveDateTime: String,
+    endActiveDateTime: String,
+    personnelId: String,
+    unitID: String,
+    calJacID: String,
+    namePrefix: String,
+    firstName: String,
+    lastName: String,
+    middleInitial: String,
+    nameSuffix: String,
+    shift: String,
+    rank: String,
+    genderCode: String,
+    genderDesc: String,
+    employeeTypeCode: String,
+    employeeTypeDesc: String,
+    birthDate: String,
+    phone: String,
+    mobilePhone: String,
+    paramedicFlag: Boolean,
+    emtFlag: Boolean,
+    employmentDate: String,
+    retiredDate: String,
+    emtLevelCode: String,
+    emtLevelDesc: String,
+    firstResponderLevelCode: String,
+    firstResponderLevelDesc: String,
+    patientChartReviewerFlag: Boolean,
+    recruitFlag: Boolean,
+    newDriverOperatorFlag: Boolean,
+    email: String,
+    promotionDate: String,
+    inServiceYearsCount: String,
+    inRankYearsCount: String,
+    stationId: String
+}
+
+type AMAgencyPersonnelResource {
+  content: AMAgencyPersonnel!,
+  links: [Link]!
+}
+
+# Being EMS Types
+
+type EMScene {
+    idHash: String,
+    incidentIdHash: String,
+    patientsCount: Int,
+    incidentLevel: String,
+    createUserId:String,
+    createUserName: String,
+    createSession: String,
+    createDateTime: String,
+    closedDateTime: String,
+    streetAddress: StreetAddressNoApt,
+    city: String,
+    state: String,
+    zipCode: String,
+    sceneId: String,
+    status: String
+
+}
+
+type EMSceneResource {
+  content: EMScene!,
+  links: [Link]!
+}
+
+type EMPatientReport {
+    idHash: String,
+    createSession: String,
+    createDateTime: String,
+    closedDateTime: String,
+    patientCareReportNumber: String,
+    sceneId: String,
+    emSceneIdHash: String,
+    unitId: String,
+    status: String,
+    emsAgencyNumber: String,
+    socialSecurityNumber: String,
+    sendingFacilityMedicalRecordNumber: String,
+    destinationMedicalRecordNumber: String,
+    patientArrivalAtDestinationDateTime: String,
+    transferPatientCareDateTime: String,
+    namePrefix: String,
+    firstName: String,
+    middleInitial: String,
+    lastName: String,
+    nameSuffix: String,
+    addressUnknownFlag: Boolean,
+    streetAddress: StreetAddress,
+    city: String,
+    state: String,
+    zipCode: String,
+    gpslocation: String,
+    primaryPhone: String,
+    driversLicenseNumber: String,
+    driversLicenseState: String,
+    age: Int,
+    ageUnitsCode: String,
+    ageUnitsDesc: String,
+    birthDate: String,
+    genderCode: String,
+    genderDesc: String,
+    raceCode: String,
+    raceDesc: String,
+    ethnicityCode: String,
+    ethnicityDesc: String,
+    chiefComplaintCode: String,
+    chiefComplaintDesc: String,
+    chiefComplaintOrganSystemCode: String,
+    chiefComplaintOrganSystemDesc: String,
+    onsetNumber: String,
+    onsetDateTime: String,
+    onsetPeriodCode: String,
+    onsetPeriodDesc: String,
+    onJobInjuryFlag: Boolean,
+    injuryIntentCode: String,
+    injuryIntentDesc: String,
+    dispositionCode: String,
+    dispositionDesc: String,
+    patientOutcomeCode: String,
+    patientOutcomeDesc: String,
+    unitContactByPersonnelId: String,
+    unitContactByFirstName: String,
+    unitContactByMiddleInitial: String,
+    unitContactByLastName: String,
+    unitContactByNameSuffix: String,
+    unitContactByRank: String,
+    partnerPersonnelId: String,
+    partnerFirstName: String,
+    partnerMiddleInitial: String,
+    partnerLastName: String,
+    partnerNameSuffix: String,
+    partnerRank: String,
+    primaryPhysicianFirstName: String,
+    primaryPhysicianMiddleInitial: String,
+    primaryPhysicianLastName: String,
+    primaryPhysicianPhone: String,
+    primaryPhysicianPager: String,
+    primaryPhysicianMobilePhone: String,
+    primaryPhysicianFax: String,
+    primaryPhysicianEmail: String,
+    attendingPhysicianFirstName: String,
+    attendingPhysicianMiddleInitial: String,
+    attendingPhysicianLastName: String,
+    attendingPhysicianPhone: String,
+    attendingPhysicianPager: String,
+    attendingPhysicianMobilePhone: String,
+    attendingPhysicianFax: String,
+    attendingPhysicianEmail: String
+}
+
+type EMPatientReportResource {
+    content: EMPatientReport!,
+    links: [Link]!
+}

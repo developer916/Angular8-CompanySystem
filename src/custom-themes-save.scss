@@ -1,0 +1,619 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+//----------------- AoS Base Theme ------------------//
+//
+// This theme is the basis of the AoS Light/Dark themes
+//
+
+@mixin aos-base-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $readOnly: Blue;
+
+  // Global styles
+  a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: Blue;
+  }
+
+  nav {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 5px;
+  }
+
+  // Catch-all for required fields - if you don't know what else to use - use this
+  .aos-required {
+    color: mat-color($warn);
+    font-weight: bold;
+  }
+
+  .aos-required-inverted {
+    background-color: mat-color($warn);
+    font-weight: bold;
+    color: white;
+    border: 1px solid mat-color($warn);
+  }
+
+  // Adjust the height of the toolbar
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 40px;
+    padding-left: 5px;
+  }
+
+  // Colors and border for the Navigation Header
+  .nav-header {
+    background-color: mat-color($primary);
+  }
+
+  .nav-header-toolbar {
+    background-color: mat-color($primary);
+    border-top: 2px solid mat-color($accent);
+    border-bottom: 2px solid mat-color($accent);
+  }
+
+  // We don't want opacity on tabs adjusted
+  .mat-tab-link {
+    height: 36px;
+    opacity: inherit;
+  }
+
+  mat-label {
+    font-size: 1em;
+  }
+
+  mat-select {
+    font-weight: bold;
+  }
+
+  mat-option {
+    font-weight: bold;
+  }
+
+
+
+
+
+  mat-card-actions {
+    margin-top: 0px;
+    background-color: #336699;
+  }
+
+
+  // Fix Select width, font size
+  .mat-form-field-infix {
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+    padding: .5em 0px;
+
+  }
+
+  .mat-select-value {
+    max-width: inherit;
+    width: inherit;
+  }
+
+  .mat-form-field .mat-select-trigger {
+    width: 100%;
+  }
+
+  .stdCallSelect {
+    width: 400px;
+  }
+  
+  .stdCallPanel {
+    margin-top: 30px !important;margin-top: 25px !important;
+    margin-left: 17px;
+    max-width: 400px !important;
+    min-width: 0px !important;
+  }
+
+  mat-card {
+    margin: 2px;
+    padding: 0px;
+    border: 1px solid mat-color($primary);
+  }
+
+  mat-card-title {
+    font-size: 1em;
+    text-align: left;
+    padding: 3px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: white;
+    background-color: mat-color($primary);
+  }
+
+  mat-card-content {
+    padding: 5px;
+  }
+
+
+  // Fix for input field error messages
+  mat-error {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: -17px; // A hack to get this positioned nicely
+    margin-bottom: 10px;
+  }
+
+  // Colors for Tabs
+  .active-tab {
+    border-bottom: 3px solid mat-color($accent) !important;
+  }
+
+  // The following fixes coloring for invalid fields
+  .mat-warn .mat-input-element, .mat-form-field-invalid .mat-input-element, mat-form-field.ng-invalid label {
+    color: mat-color($warn) !important;
+    font-weight: bold;
+  }
+
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: black !important;
+    font-weight: bold;
+  }
+
+  mat-form-field.ng-invalid div.mat-input-underline {
+    background-color: mat-color($warn) !important;
+  }
+
+  // Fixes issues on query page
+  mat-form-field.mat-form-field-appearance-outline div.mat-form-field-wrapper {
+    padding-bottom: 0;
+
+  }
+
+  // The following fixes coloring for read only fields
+  mat-form-field .mat-readonly {
+    color: $readOnly !important;
+    background-color: #990000;
+  }
+
+  .mat-readonly .mat-input-element, .mat-readonly .mat-form-field-flex, .mat-readonly .mat-form-field-infix{
+    color: ghostwhite !important;
+    background-color: $readOnly !important;
+  }
+
+  .mat-readonly .mat-select-placeholder, .mat-readonly .mat-select-arrow, .mat-readonly label, .mat-readonly .mat-input-placeholder {
+    color: ghostwhite !important;
+    //background-color: #990000;
+    font-weight: bold;
+  }
+
+  .mat-readonly .mat-select-underline, .mat-readonly .mat-input-underline {
+    background-color: ghostwhite !important;
+    background-color: #990000;
+    font-weight: bold;
+  }
+
+  .aos-required label div .mat-checkbox-frame {
+    border-color: mat-color($warn);
+  }
+
+
+  //CheckBox Styling
+  .mat-checkbox-label {
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .mat-checkbox-inner-container {
+    background-color: ghostwhite;
+  }
+
+
+
+  // List-Detail styling
+  th {
+    color: mat-color($accent);
+  }
+
+  .aos-list-detail-selected {
+    background-color: lightgrey;
+  }
+
+  // CAD table styling
+  .cad-table-content {
+    color: $readOnly !important;
+    font-weight: bold;
+  }
+
+  // Fix for vertical alignment of date fields
+  mat-form-field.date div.mat-form-field-infix {
+    margin-bottom: -1px;
+  }
+
+  .aos-query-row {
+    height: 2em !important;
+  }
+
+  // Colors and Fonts for Query Results pages
+  .response-type-r td {
+    color: white;
+    font-weight: bold;
+    background-color: #990000;
+  }
+
+  .response-type-plus td {
+    color: white;
+    font-weight: bold;
+    background-color: #006666;
+  }
+
+  .response-type-s td {
+    color: #004477;
+    background-color: #cddbeb;
+  }
+
+  .response-type-m td {
+    color: black;
+    background-color: #FFCC99;
+  }
+
+  .response-type-n td {
+    color: black !important;
+    background-color: #C0C0C0;
+  }
+
+
+
+  //Button Styling
+  .mat-raised-button:hover {
+ //   background-color: orangered;
+    border-radius: 2px;
+  }
+
+  .mat-raised-button {
+    width: 100px;
+    padding: 10px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 4px 2px;
+    font-weight: bold;
+  }
+
+
+
+  // Cursor Styling
+  .mat-input-element {
+    cursor: pointer;
+  }
+
+
+
+  //Radio Button Styling
+  .mat-radio-outer-circle:hover {
+ //   background-color: orangered;
+  }
+
+  .mat-radio-outer-circle {
+  }
+
+  .mat-radio-inner-circle {
+    border: 10px solid #336699;
+  }
+
+
+
+  //Nav Menu Styling
+  .nav-menu-button:hover {
+  //  background-color: orangered;
+    color: ghostwhite;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+
+  .nav-header-content:hover {
+   // background-color: orangered;
+    color: ghostwhite;
+    font-weight: bold;
+    padding-left: 20px;
+    border-radius: 5px;
+  }
+
+  .nav-header-content-right:hover {
+   // background-color: orangered;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+
+
+
+  //List Page Styling
+  .list-container {
+    border: 5px solid #336699;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-width: 300px;
+  }
+
+  .mat-table {
+    overflow: auto;
+    width: 100%;
+  }
+
+  .incident-list-header {
+    text-align: center;
+    position: center;
+    font-size: 16px;
+  }
+
+  .mat-row:hover {
+    font-weight: bold;
+    text-align: center;
+    padding-left: -4px;
+    padding-right: 20px;
+    cursor: pointer;
+  }
+
+  .query-card-title {
+    text-align: center;
+  }
+
+  .detailLink {
+    text-decoration: underline;
+  }
+
+
+
+  //Mat-Form-Field
+  .mat-form-field {
+    border-radius:5px;
+    font-weight: bold;
+  }
+
+  .mat-form-field-wrapper {
+    margin: 2px;
+    padding-bottom: 0px;
+    background-color: ghostwhite;
+    border-radius: 5px;
+  }
+
+  .mat-form-field-wrapper:hover {
+    background-color: lightgray;
+  }
+
+
+  .mat-form-field-underline {
+    position: static;
+  }
+
+
+
+  //Incident List Styling
+  .mat-form-field-infix {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .mat-form-field-autofill-control {
+
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .mat-form-field-flex {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  }
+
+  .incident-list-header {
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+}
+
+
+/*****----------------- AoS Light Theme -----------------******/
+$aos-light-primary: mat-palette($mat-blue-grey, 600, 100, 500);
+$aos-light-accent:  mat-palette($mat-blue-grey, 600);
+$aos-light-warn: mat-palette($mat-red, 800, 400, 900);
+$aos-light-theme: mat-light-theme($aos-light-primary, $aos-light-accent, $aos-light-warn);
+
+
+.aos-light-theme {
+  @include angular-material-theme($aos-light-theme);
+  @include aos-base-theme($aos-light-theme);
+
+  .nav-menu {
+    background-color: white;
+  }
+
+  .incident-list-header {
+    color: #004477;
+  }
+}
+
+/*****----------------- AoS Dark Theme -----------------******/
+$aos-dark-primary: mat-palette($mat-blue-grey, 600, 100, 500);
+$aos-dark-accent: mat-palette($mat-blue-grey, 600);
+$aos-dark-theme: mat-dark-theme($aos-dark-primary, $aos-dark-accent, $aos-light-warn);
+
+.aos-dark-theme {
+  @include angular-material-theme($aos-dark-theme);
+  @include aos-base-theme($aos-dark-theme);
+
+
+  .nav-menu {
+    background-color: black;
+  }
+
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: white !important;
+    font-weight: bold;
+  }
+
+  mat-form-field .mat-readonly {
+    color: steelblue !important;
+    font-weight: bold;
+  }
+
+  .mat-readonly .mat-input-element {
+    color: steelblue !important;
+    font-weight: bold;
+  }
+
+  .mat-readonly .mat-select-placeholder, .mat-readonly .mat-select-arrow, .mat-readonly label, .mat-readonly .mat-input-placeholder {
+    color: steelblue !important;
+    font-weight: bold;
+  }
+
+  .cad-table-content {
+    color: steelblue !important;
+    font-weight: bold;
+  }
+
+  .incident-list-header {
+    color: steelblue;
+  }
+
+}
+
+
+
+/*****----------------- OSRMS Legacy Theme -----------------******/
+$osrms-legacy-primary: mat-palette($mat-blue-grey, 600, 100, 500);
+$osrms-legacy-accent:  mat-palette($mat-blue-grey, 600);
+$osrms-legacy-warn: mat-palette($mat-red, 800, 400, 900);
+$osrms-legacy-theme: mat-light-theme($osrms-legacy-primary, $osrms-legacy-accent, $osrms-legacy-warn);
+
+
+.osrms-legacy-theme {
+  @include angular-material-theme($osrms-legacy-theme);
+  @include aos-base-theme($osrms-legacy-theme);
+
+  // Navigation Menu Styling
+  .nav-menu {
+    background-color: #336699;
+    color: ghostwhite;
+    padding-right: 5px;
+    position: center;
+  }
+
+  .nav-menu-button {
+    text-align: center;
+    padding-right: 5px;
+  }
+
+  .nav-header {
+    background-color: #336699;
+  }
+
+
+  .incident-list-header {
+    color: #004477;
+  }
+
+
+
+  // Form Field Styling
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: #546E7A !important;
+    font-weight: normal;
+  }
+
+  .mat-card-content {
+    background-color: #ccddee;
+  }
+
+  .mat-card {
+    background: #ccddee;
+  }
+
+  .mat-app-background {
+    background-color: #ccddee;
+  }
+
+  mat-card-footer {
+    background-color: dimgray;
+    width: 100%;
+    line-height: 10px;
+    margin: 0;
+  }
+
+  .header {
+    margin: 0;
+    padding: 0;
+    background-color: #006666;
+    font-size: 14px;
+  }
+
+  .query-card-title {
+    background-color: #336699;
+  }
+
+  .mat-form-field {
+    color: #336699;
+
+  }
+
+  .mat-form-field-outline {
+    background-color: red;
+    border-radius: 5px;
+  }
+
+  .mat-form-field-label {
+    font-size: 14px;
+    font-style: italic;
+    color: blue;
+  }
+
+  .mat-card-actions {
+    background-color: #336699;
+    margin: 0px;
+  }
+
+
+
+  // Select Form Field Styling
+  .mat-select-value {
+    color: #336699;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+
+
+
+  //LIST PAGE STYLING
+  .mat-header-row {
+    width: 100%;
+    background-color: #f2f2f2;
+  }
+
+  .query-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+
+
+  // Mat Table Style
+  .mat-table {
+    background-color: #ccddee;
+  }
+
+}
+
+

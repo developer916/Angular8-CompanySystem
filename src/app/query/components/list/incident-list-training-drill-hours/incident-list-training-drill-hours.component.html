@@ -1,0 +1,61 @@
+
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Training Drill Hours</mat-card-title>
+    <mat-card-content style="margin-top: 10px;">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!-- Print Column -->
+          <ng-container cdkColumnDef="print">
+            <mat-header-cell *cdkHeaderCellDef>Print</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.print}}</mat-cell>
+          </ng-container>
+
+          <!-- Shift Complete -->
+          <ng-container cdkColumnDef="shift">
+            <mat-header-cell *cdkHeaderCellDef>Shift</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.shift}}</mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container cdkColumnDef="name">
+            <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.name}}</mat-cell>
+          </ng-container>
+
+          <!-- Total Hours Column -->
+          <ng-container cdkColumnDef="totalHours">
+            <mat-header-cell *cdkHeaderCellDef>Total Hours</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.totalHours}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!-- Added Buttons along the bottom of page -->
+        <mat-card-actions style="margin-bottom: 15px;">
+          <div>
+            <button type="button" mat-raised-button>Print</button>
+          </div>
+
+        </mat-card-actions>
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+
+</div>

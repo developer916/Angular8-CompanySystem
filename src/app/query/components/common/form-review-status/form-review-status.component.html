@@ -1,0 +1,10 @@
+<div class="form-review-status">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Review Status</mat-label>
+    <mat-select
+                [id]="'aos.query.common.reviewStatus'"
+                [formControlName]="'reviewStatus'">
+      <mat-option *ngFor="let reviewStatus of reviewStatusList" [value]="reviewStatus.value" >{{reviewStatus.displayText}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

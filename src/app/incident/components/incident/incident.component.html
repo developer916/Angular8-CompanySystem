@@ -1,0 +1,27 @@
+<div>
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <div *ngIf="formElementContext || !incidentOpen(); else spinnerView">
+    <div *ngIf="incidentOpen() && !showPdf(); else pdfView">
+      <form [formGroup]="formElementContext.formGroup" class="appForm">
+        <app-toolbar [formGroup]="formElementContext.formGroup"></app-toolbar>
+        <app-dynamic-form-element [formElement]="formElementContext.formElements[0]" [formElementContext]="formElementContext"></app-dynamic-form-element>
+      </form>
+    </div>
+  </div>
+
+  <ng-template #pdfView>
+    <div>
+      <app-incident-pdf></app-incident-pdf>
+    </div>
+  </ng-template>
+
+  <ng-template #spinnerView>
+    <div class="progressBar">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+</div>

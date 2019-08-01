@@ -1,0 +1,89 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Agency Personnel</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by ID, Name (Begins with)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-personnel-id></app-form-personnel-id>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-first-name></app-form-first-name>
+            </td>
+            <td>
+              <app-form-last-name></app-form-last-name>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Rank</h3>
+            </td>
+            <td>
+              <h3>Search by Gender</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-search-rank></app-form-search-rank>
+            </td>
+            <td>
+              <app-form-search-gender></app-form-search-gender>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Profile</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-recruit></app-form-recruit>
+            </td>
+            <td>
+              <app-form-paramedic></app-form-paramedic>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-new-driver-operator></app-form-new-driver-operator>
+            </td>
+            <td>
+              <app-form-emt></app-form-emt>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+
+
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss -->
+          <button type="submit" mat-raised-button (click)= "submit()">Query</button>
+          <button type="submit" mat-raised-button (click)= "submitAdd()">Add</button>
+        </div>
+
+      </mat-card-actions>
+
+    </mat-card>
+  </form>
+</div>

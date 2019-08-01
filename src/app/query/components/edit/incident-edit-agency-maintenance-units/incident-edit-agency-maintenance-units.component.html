@@ -1,0 +1,44 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Agency Personnel</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Maintenance Unit Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Maintenance #"
+                   [id]="'Session.OS.AM.QBEAgencyMaintenanceUnits.MaintenanceNumber'"
+                   [formControlName]="'maintenanceNumber'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Morphine Inventory"
+                        [id]="'Session.OS.AM.QBEAgencyMaintenanceUnits.MorphineInventory'"
+                        [formControlName]="'morphineInventory'" >
+              <mat-option *ngFor="let morphineInventory of ['A', 'B', 'C']" [value]="morphineInventory">{{morphineInventory}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Midazolam Inventory"
+                        [id]="'Session.OS.AM.QBEAgencyMaintenanceUnits.MidazolamInventory'"
+                        [formControlName]="'midazolamInventory'" >
+              <mat-option *ngFor="let midazolamInventory of ['A', 'B', 'C']" [value]="midazolamInventory">{{midazolamInventory}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

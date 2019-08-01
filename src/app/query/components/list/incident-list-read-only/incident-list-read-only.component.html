@@ -1,0 +1,61 @@
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Read Only Incident Reports</mat-card-title>
+    <mat-card-content>
+      <div>
+        <span class="incident-list-header">{{numResults()}} results returned...</span>
+      </div>
+      <div class="query-loading-shade" *ngIf="incidentQueryDatabase.queryLoading">
+        <mat-spinner diameter="50" ></mat-spinner>
+      </div>
+      <div class="list-container">
+        <table mat-table matSort [dataSource]="dataSource" >
+
+          <!-- Incident # Column -->
+          <ng-container matColumnDef="incidentNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">Incident #</th>
+            <td mat-cell *matCellDef="let row"><span class="detailLink" (click)="showIncidentDetail(row.id)">{{row.incidentNumber}}</span></td>
+          </ng-container>
+
+          <!-- status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">Status</th>
+            <td mat-cell *matCellDef="let row">{{row.status}}</td>
+          </ng-container>
+
+          <!-- Alarm Date Column -->
+          <ng-container matColumnDef="alarmDateTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">Alarm Date</th>
+            <td mat-cell *matCellDef="let row">{{row.alarmDateTime}}</td>
+          </ng-container>
+
+          <!-- Incident Type Column -->
+          <ng-container matColumnDef="incidentType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">Incident Type</th>
+            <td mat-cell *matCellDef="let row"> {{row.incidentType}}</td>
+          </ng-container>
+
+          <!-- Address Column -->
+          <ng-container matColumnDef="incidentAddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">Address</th>
+            <td mat-cell *matCellDef="let row"> {{row.incidentAddress.toUpperCase()}}</td>
+          </ng-container>
+
+          <!-- City Column -->
+          <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="incident-list-header">City</th>
+            <td mat-cell *matCellDef="let row"> {{row.city}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row class="aos-query-row" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

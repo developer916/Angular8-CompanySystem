@@ -1,0 +1,10 @@
+<div class="form-set-violations">
+  <mat-form-field>
+    <mat-label>Top Count</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEInspectionViolationSummary.TopCount'"
+                [formControlName]="'topCount'">
+      <mat-option *ngFor="let topCount of [10,25,50,100]" [value]="topCount">{{topCount}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

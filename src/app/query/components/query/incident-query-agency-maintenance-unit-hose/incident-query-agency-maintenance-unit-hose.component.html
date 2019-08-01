@@ -1,0 +1,46 @@
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Agency Maintenance Unit Hose</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Unit # (Begins With: 6 = 600 or 611, 55 = 550 or 551)</h3>
+            </td>
+            <td>
+              <h3>Search by Engine Type</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-maintenance-number></app-form-maintenance-number>
+            </td>
+            <td>
+              <app-form-search-engine-type></app-form-search-engine-type>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+
+      <mat-card-actions >
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button (click)= "submit('Query')">Query</button>
+          <button type="submit" mat-raised-button (click)= "submit('Add')">Add</button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

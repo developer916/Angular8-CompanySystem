@@ -1,0 +1,93 @@
+
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Field Drill Review (Accept/Reject)</mat-card-title>
+    <mat-card-content style="margin-top: 10px;">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!--Stage Column -->
+          <ng-container cdkColumnDef="stage">
+            <mat-header-cell *cdkHeaderCellDef>Stage</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.stage}}</mat-cell>
+          </ng-container>
+
+          <!--Date Column -->
+          <ng-container cdkColumnDef="date">
+            <mat-header-cell *cdkHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.date}}</mat-cell>
+          </ng-container>
+
+          <!-- Shift Column -->
+          <ng-container cdkColumnDef="shift">
+            <mat-header-cell *cdkHeaderCellDef>Shift</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.shift}}</mat-cell>
+          </ng-container>
+
+          <!-- Drill Column -->
+          <ng-container cdkColumnDef="drill">
+            <mat-header-cell *cdkHeaderCellDef>Drill</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.drill}}</mat-cell>
+          </ng-container>
+
+          <!-- Location Column -->
+          <ng-container cdkColumnDef="location">
+            <mat-header-cell *cdkHeaderCellDef>Location</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.location}}</mat-cell>
+          </ng-container>
+
+          <!-- Accepted Column -->
+          <ng-container cdkColumnDef="accepted">
+            <mat-header-cell *cdkHeaderCellDef>Accepted</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.accepted}}</mat-cell>
+          </ng-container>
+
+          <!-- Rejected Column -->
+          <ng-container cdkColumnDef="rejected">
+            <mat-header-cell *cdkHeaderCellDef>Rejected</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.rejected}}</mat-cell>
+          </ng-container>
+
+          <!-- Reason Column -->
+          <ng-container cdkColumnDef="reason">
+            <mat-header-cell *cdkHeaderCellDef>Reason</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.reason}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!-- Added Buttons along the bottom of page -->
+        <mat-card-actions style="margin-bottom: 15px;">
+          <div style="width:25%; float:left;">
+            <button type="button" mat-raised-button>Return</button>
+          </div>
+          <div style="width:25%; float:left;">
+            <button type="button" mat-raised-button>Previous</button>
+          </div>
+          <div style="width:25%; float:left;">
+            <button type="button" mat-raised-button>Next</button>
+          </div>
+          <div style="width:25%; float:left;">
+            <button type="button" mat-raised-button>Save</button>
+          </div>
+
+        </mat-card-actions>
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+</div>

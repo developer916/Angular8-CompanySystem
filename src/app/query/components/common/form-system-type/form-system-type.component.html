@@ -1,0 +1,10 @@
+<div class="form-system-type">
+  <mat-form-field>
+    <mat-label>System Type</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancyStructureSystem.SystemType4'"
+                [formControlName]="'systemType'">
+      <mat-option *ngFor="let systemType of ['Fire Alarm System', 'Fire Pump System', 'Private Water System']" [value]="systemType">{{systemType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

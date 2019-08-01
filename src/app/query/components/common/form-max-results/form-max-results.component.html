@@ -1,0 +1,10 @@
+<div class="form-max-results">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Max Results</mat-label>
+    <mat-select
+                [id]="'aos.query.common.rowCount'"
+                [formControlName]="'rowCount'">
+      <mat-option *ngFor="let rowCount of [25, 50, 100, 250, 500, 1000]" [value]="rowCount" >{{rowCount}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,55 @@
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">HazMat Incident Reports</mat-card-title>
+    <mat-card-content>
+      <div>
+        <span class="incident-list-header">{{numResults()}} results returned...</span>
+      </div>
+      <div class="query-loading-shade" *ngIf="incidentQueryDatabase.queryLoading">
+        <mat-spinner diameter="50" ></mat-spinner>
+      </div>
+      <div class="list-container">
+        <table mat-table matSort [dataSource]="dataSource">
+
+          <!-- Incident # Column -->
+          <ng-container cdkColumnDef="incidentNumber">
+            <th mat-header-cell *cdkHeaderCellDef mat-sort-header class="incident-list-header">Incident #</th>
+            <td mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showIncidentDetail(row.id)">{{row.incidentNumber}}</span></td>
+          </ng-container>
+
+          <!--Report By Column -->
+          <ng-container cdkColumnDef="reportBy">
+            <th mat-header-cell *cdkHeaderCellDef mat-sort-header class="incident-list-header">Report By</th>
+            <td mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showHazmatForm(row.id)">{{row.reportBy}}</span></td>
+          </ng-container>
+
+          <!-- Date and Time Column -->
+          <ng-container cdkColumnDef="alarmDateTime">
+            <th mat-header-cell *cdkHeaderCellDef mat-sort-header class="incident-list-header">Date</th>
+            <td mat-cell *cdkCellDef="let row">{{row.alarmDateTime}}</td>
+          </ng-container>
+
+          <!-- Address Column -->
+          <ng-container cdkColumnDef="incidentAddress">
+            <th mat-header-cell *cdkHeaderCellDef mat-sort-header class="incident-list-header">Address</th>
+            <td mat-cell *cdkCellDef="let row">{{row.incidentAddress.toUpperCase()}}</td>
+          </ng-container>
+
+          <!--HazMat Status Column -->
+          <ng-container cdkColumnDef="status">
+            <th mat-header-cell *cdkHeaderCellDef mat-sort-header class="incident-list-header">HazMat Status</th>
+            <td mat-cell *cdkCellDef="let row">{{row.status}}</td>
+          </ng-container>
+
+          <tr mat-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

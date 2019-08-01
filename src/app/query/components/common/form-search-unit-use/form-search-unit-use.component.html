@@ -1,0 +1,10 @@
+<div class="form-search-unit-use">
+  <mat-form-field>
+    <mat-label>Unit Use</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyUnits.UnitUse'"
+                [formControlName]="'unitUse'" >
+      <mat-option *ngFor="let unitUse of ['A', 'B', 'C']" [value]="unitUse" >{{unitUse}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

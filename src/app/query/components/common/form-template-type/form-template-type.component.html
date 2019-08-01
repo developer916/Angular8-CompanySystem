@@ -1,0 +1,10 @@
+<div class="form-template-type">
+  <mat-form-field>
+    <mat-label>Template Type</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyDocumentTemplate.TemplateType'"
+                [formControlName]="'templateType'">
+      <mat-option *ngFor="let templateType of ['A', 'B', 'C']" [value]="templateType">{{templateType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

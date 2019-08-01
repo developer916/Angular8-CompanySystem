@@ -1,0 +1,10 @@
+<div class="form-search-method">
+  <mat-form-field>
+    <mat-label>Method</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.EventMethod1'"
+                [formControlName]="'method'">
+      <mat-option *ngFor="let method of ['Method A', 'Method B', 'Method C']" [value]="method">{{method}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

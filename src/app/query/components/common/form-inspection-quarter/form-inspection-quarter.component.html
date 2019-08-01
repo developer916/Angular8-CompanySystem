@@ -1,0 +1,10 @@
+<div class="form-inspection-quarter">
+  <mat-form-field>
+    <mat-label>Inspection By Quarter</mat-label>
+    <mat-select
+                [id]="'Session.OS.IM.QBEHydrantInspectionRecord.Quarter'"
+                [formControlName]="'inspectionQuarter'">
+      <mat-option *ngFor="let quarter of ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter']" [value]="quarter" >{{quarter}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

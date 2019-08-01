@@ -1,0 +1,10 @@
+<div class="form-container-type">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Container Type</mat-label>
+    <mat-select
+                [id]="'aos.query.common.containerType'"
+                [formControlName]="'containerType'" >
+      <mat-option *ngFor="let containerType of ['Value 1', 'Value 2', 'Value 3']" [value]="containerType">{{containerType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

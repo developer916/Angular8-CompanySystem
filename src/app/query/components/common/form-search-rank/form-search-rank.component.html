@@ -1,0 +1,10 @@
+<div class="form-search-rank">
+  <mat-form-field>
+    <mat-label>Rank</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyPersonnel.Rank'"
+                [formControlName]="'rank'" >
+      <mat-option *ngFor="let rank of ['A', 'B', 'C', 'D']" [value]="rank">{{rank}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

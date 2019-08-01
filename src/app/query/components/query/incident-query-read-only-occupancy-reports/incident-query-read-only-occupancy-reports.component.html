@@ -1,0 +1,169 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title" style="text-align: center">Query Read Only Occupancy Reports</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Business (Contains: Pizza = Best Pizza or Pizza King)</h3>
+            </td>
+            <td>
+              <h3>Search by Class/District</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-business-name></app-form-business-name>
+            </td>
+            <td>
+              <app-form-occupancy-class></app-form-occupancy-class>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-phone-number></app-form-phone-number>
+            </td>
+            <td>
+             <app-form-district></app-form-district>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search be Address(Begins with: 4 M = 400 Main or 41 Market)</h3>
+            </td>
+            <td>
+              <h3>Search by # (Begins with)(List allowed)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-linked-occupancy></app-form-linked-occupancy>
+            </td>
+            <td>
+              <app-form-parcel-number></app-form-parcel-number>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-address></app-form-address>
+            </td>
+            <td>
+              <app-form-tax-id></app-form-tax-id>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-subdivision></app-form-subdivision>
+            </td>
+            <td>
+              <app-form-occupancy-numbers></app-form-occupancy-numbers>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-within-city></app-form-within-city>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-city></app-form-city>
+            </td>
+            <td>
+              <app-form-address></app-form-address>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Inspection</h3>
+            </td>
+            <td>
+              <h3>Search by Zone</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-inspection-zone></app-form-inspection-zone>
+            </td>
+            <td>
+              <app-form-fire-mgmt-zone></app-form-fire-mgmt-zone>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-inspection-cycle></app-form-inspection-cycle>
+            </td>
+            <td>
+              <app-form-fire-severity-zone></app-form-fire-severity-zone>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Inspection Compliance</h3>
+            </td>
+            <td>
+              <h3>Summary By Type (Open Issues: Permit, Inspection, Project, Plan Review Invoice)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-inspection-compliance></app-form-inspection-compliance>
+            </td>
+            <td>
+              <app-form-summary-includes></app-form-summary-includes>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Set Stage</h3>
+            </td>
+            <td>
+              <h3>Set Status</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-stage></app-form-stage>
+            </td>
+            <td>
+              <app-form-status></app-form-status>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Set Row Count</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-max-results></app-form-max-results>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </form>
+
+</div>

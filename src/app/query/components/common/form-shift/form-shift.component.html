@@ -1,0 +1,10 @@
+<div class="form-shift">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Shift</mat-label>
+    <mat-select
+                [id]="'aos.query.common.shift'"
+                [formControlName]="'shift'">
+      <mat-option *ngFor="let shift of shiftList" [value]="shift.value" >{{shift.displayText}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

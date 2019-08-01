@@ -1,0 +1,108 @@
+<div style="text-align:center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup" >
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Training Continuing Education</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Month</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <app-form-search-month></app-form-search-month>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Date</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-offset></app-form-date-offset>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by PersonnelID</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-personnel-id></app-form-personnel-id>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Drill</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-drill></app-form-drill>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-drill></app-form-drill>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-drill></app-form-drill>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Set Row Count</h3>
+            </td>
+            <td>
+              <h3>Set Status</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-max-results></app-form-max-results>
+            </td>
+            <td>
+              <app-form-status></app-form-status>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </form>
+</div>

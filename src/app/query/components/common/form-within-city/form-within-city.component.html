@@ -1,0 +1,10 @@
+<div class="form-within-city">
+  <mat-form-field>
+    <mat-label>Within City</mat-label>
+  <mat-select
+              [id]="'Session.OS.PM.QBEOccupancy.DistanceFrom'"
+              [formControlName]="'distance'">
+    <mat-option *ngFor="let distance of ['100 feet', '200 feet', '300 feet']" [value]="distance">{{distance}}</mat-option>
+  </mat-select>
+  </mat-form-field>
+</div>

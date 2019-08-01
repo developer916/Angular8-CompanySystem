@@ -1,0 +1,124 @@
+<div style="text-align:center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Occupancy Structure/Systems</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Occupancy (Required - Select One or More Occupancy Attribute)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-occupancy-class></app-form-occupancy-class>
+            </td>
+            <td>
+              <app-form-inspection-zone></app-form-inspection-zone>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-district></app-form-district>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Structure (Optional - Structure Attribute)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-property-use></app-form-property-use>
+            </td>
+            <td>
+              <app-form-total-square-feet></app-form-total-square-feet>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by System Type (Optional - One or More System Type)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-engineered-system></app-form-engineered-system>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-system-type></app-form-system-type>
+            </td>
+            <td>
+              <app-form-system-type></app-form-system-type>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-system-type></app-form-system-type>
+            </td>
+            <td>
+              <app-form-system-type></app-form-system-type>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search By System Type (Optional - One or More System Type)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-search-month></app-form-search-month>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-offset></app-form-date-offset>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Set Row Count</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-max-results></app-form-max-results>
+            </td>
+          </tr>
+
+        </table>
+
+      </mat-card-content>
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </form>
+</div>

@@ -1,0 +1,88 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">List Agency Personnel</mat-card-title>
+    <mat-card-content style="margin-top: 10px;">
+      <div class="list-container">
+      <mat-table #table [dataSource]="dataSource">
+
+        <!-- Personnel ID Column -->
+        <ng-container cdkColumnDef="personnelID">
+          <mat-header-cell *cdkHeaderCellDef>Personnel ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showIncidentDetail(row.id)">{{row.personnelID}}</span></mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="name">
+          <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.name}}</mat-cell>
+        </ng-container>
+
+        <!-- Rank/Title Column -->
+        <ng-container cdkColumnDef="rankTitle">
+          <mat-header-cell *cdkHeaderCellDef>Rank/Title</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.rankTitle}}</mat-cell>
+        </ng-container>
+
+        <!-- Cert Level (Medical) Column -->
+        <ng-container cdkColumnDef="certLevel">
+          <mat-header-cell *cdkHeaderCellDef>Cert Level (Medical)</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.certLevel}}</mat-cell>
+        </ng-container>
+
+        <!-- Shift Column -->
+        <ng-container cdkColumnDef="shift">
+          <mat-header-cell *cdkHeaderCellDef>Shift</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.shift}}</mat-cell>
+        </ng-container>
+
+        <!-- Recruit Column -->
+        <ng-container cdkColumnDef="recruit">
+          <mat-header-cell *cdkHeaderCellDef>Recruit</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.recruit}}</mat-cell>
+        </ng-container>
+
+        <!-- New Driver Operator Column -->
+        <ng-container cdkColumnDef="newDriverOperator">
+          <mat-header-cell *cdkHeaderCellDef>New Driver Operator</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.newDriverOperator}}</mat-cell>
+        </ng-container>
+
+        <!-- Delete Column -->
+        <ng-container cdkColumnDef="delete">
+          <mat-header-cell *cdkHeaderCellDef>Delete</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{row.delete}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+        <!-- need to revisit the button and <form> below; pages render but error with #Paginator  -->
+      <mat-paginator #paginator
+                     [length]="incidentQueryDatabase.data.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[10, 25, 50, 100]">
+      </mat-paginator>
+      <hr style="clear:both">
+
+      <!-- Added Button along the bottom of page -->
+      <form (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button (click)= "submit('Query')">Query</button>
+          <button type="submit" mat-raised-button (click)= "submit('Add')">Add</button>
+        </div>
+
+      </mat-card-actions>
+      </form>
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+</div>

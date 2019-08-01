@@ -1,0 +1,124 @@
+<div style="text-align: center;">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Public Incident Reports</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              Search By Date
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-date-range></app-form-date-range>
+            </td>
+            <td>
+              <app-form-date-offset></app-form-date-offset>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              Search by Address (Begins with: 4 M = 400 Main or 41 Market)
+            </td>
+            <td>
+              Search by City (Begins with)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-address></app-form-address>
+            </td>
+            <td>
+              <app-form-city></app-form-city>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-zip-code></app-form-zip-code>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              Search by Name (Begins with: First Name T = Tom or Tim)
+            </td>
+            <td>
+              (Begins with: Last Name J = Jones or James
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-first-name></app-form-first-name>
+            </td>
+            <td>
+              <app-form-last-name></app-form-last-name>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              Search by License
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-license-plate></app-form-license-plate>
+            </td>
+            <td>
+              <app-form-license-number></app-form-license-number>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              Search by Incident Number (Incident - Exposure)
+            </td>
+            <td>
+              Search by Year
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-incident-exposure></app-form-incident-exposure>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              Set Max Incidents
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-max-results></app-form-max-results>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+        <mat-card-actions>
+          <div>
+            <button type="submit" mat-raised-button>Query</button>
+          </div>
+        </mat-card-actions>
+      </mat-card-content>
+
+      <mat-card-footer></mat-card-footer>
+    </mat-card>
+
+  </form>
+</div>

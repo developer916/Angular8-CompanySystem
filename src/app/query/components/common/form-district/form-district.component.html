@@ -1,0 +1,10 @@
+<div class="form-district">
+  <mat-form-field>
+    <mat-label>District</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancy.District'"
+                [formControlName]="'district'">
+      <mat-option *ngFor="let district of [30, 31, 32]" [value]="district">{{district}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

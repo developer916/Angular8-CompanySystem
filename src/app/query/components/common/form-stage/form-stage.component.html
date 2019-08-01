@@ -1,0 +1,10 @@
+<div class="form-stage">
+  <mat-form-field>
+    <mat-label>Stage</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBEReviewPreTraining.Stage'"
+                [formControlName]="'stage'">
+      <mat-option *ngFor="let stage of ['Initial', 'Accepted', 'Rejected']" [value]="stage" >{{stage}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

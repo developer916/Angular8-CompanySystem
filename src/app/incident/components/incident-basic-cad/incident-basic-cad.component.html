@@ -1,0 +1,27 @@
+<div style="text-align:center">
+  <mat-card>
+    <mat-card-title>CAD Data</mat-card-title>
+    <mat-card-content style="margin-top: 10px;">
+      <div class="list-container" style="text-align: left;">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!-- Name Column -->
+          <ng-container cdkColumnDef="name">
+            <mat-header-cell *cdkHeaderCellDef class="cad-table-content" style="font-size: 1.3em; font-weight: bold">Incident Data</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" class="cad-table-content">{{row.name}}</mat-cell>
+          </ng-container>
+
+          <!-- Value Column -->
+          <ng-container cdkColumnDef="value">
+            <mat-header-cell *cdkHeaderCellDef class="cad-table-content"></mat-header-cell>
+            <mat-cell *cdkCellDef="let row" class="cad-table-content">{{row.value}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

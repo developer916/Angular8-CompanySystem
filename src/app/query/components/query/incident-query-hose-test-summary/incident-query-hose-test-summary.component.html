@@ -1,0 +1,85 @@
+<div style="text-align:center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Hose Test Summary</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Due Date (Annual Hose Tests due by year end)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Date Tested (Date Hose Test Occurred)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Unit Maintenance Number</h3>
+            </td>
+            <td>
+              <h3>Search by Unit (Radio ID)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-maintenance-number></app-form-maintenance-number>
+            </td>
+            <td>
+              <app-form-unit></app-form-unit>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Station</h3>
+            </td>
+            <td>
+              <h3>Search by PersonnelID (Officer who conducted test)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-station></app-form-station>
+            </td>
+            <td>
+              <app-form-personnel-id></app-form-personnel-id>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

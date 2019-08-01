@@ -1,0 +1,10 @@
+<div class="form-dot-class">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>DOT Class</mat-label>
+    <mat-select
+                [id]="'aos.query.common.dotClass'"
+                [formControlName]="'dotClass'">
+      <mat-option *ngFor="let dotClass of ['Value 1', 'Value 2', 'Value 3']" [value]="dotClass">{{dotClass}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,10 @@
+<div class="form-activity-type">
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.ActivityType'"
+                [formControlName]="'type'">
+      <mat-option *ngFor="let type of ['Company', 'Individual', 'Multi-Agency']" [value]="type">{{type}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

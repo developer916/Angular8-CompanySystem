@@ -1,0 +1,11 @@
+<div class="form-date-offset">
+  <mat-radio-group
+    [id]="'aos.query.common.dateOffset'"
+    [formControlName]="'lastXDays'">
+    <mat-radio-button style="padding-left: 15px; font-weight: bold;" [value]="1" [disableRipple]="true">Today</mat-radio-button>
+    <mat-radio-button style="padding-left: 15px; font-weight: bold;" [value]="7" [disableRipple]="true">Last 7 Days</mat-radio-button>
+    <mat-radio-button style="padding-left: 15px; font-weight: bold;" [value]="30" [disableRipple]="true" checked>Last 30 Days</mat-radio-button>
+    <mat-radio-button style="padding-left: 15px; font-weight: bold;" [value]="60" [disableRipple]="true">Last 60 Days</mat-radio-button>
+    <mat-radio-button style="padding-left: 15px; font-weight: bold;" [value]="90" [disableRipple]="true">Last 90 Days</mat-radio-button>
+  </mat-radio-group>
+</div>

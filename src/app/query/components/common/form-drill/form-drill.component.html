@@ -1,0 +1,10 @@
+<div class="form-drill">
+  <mat-form-field>
+    <mat-label>Drill</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.Drill1'"
+                [formControlName]="'drill'">
+      <mat-option *ngFor="let drill of ['TBD', 'TBD2', 'TBD3']" [value]="drill">{{drill}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

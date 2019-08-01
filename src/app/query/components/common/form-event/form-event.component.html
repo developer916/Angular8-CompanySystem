@@ -1,0 +1,10 @@
+<div class="form-event">
+  <mat-form-field>
+    <mat-label>Event</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.Event'"
+                [formControlName]="'event'">
+      <mat-option *ngFor="let event of ['Academy', 'Prevention', 'Emergency Medical']" [value]="event">{{event}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

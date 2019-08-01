@@ -1,0 +1,82 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">List Agency Maintenance Unit Hose</mat-card-title>
+    <mat-card-content style="margin-top: 10px;">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+          <!-- Duplicate Column -->
+          <ng-container cdkColumnDef="duplicate">
+            <mat-header-cell *cdkHeaderCellDef>Duplicate</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.duplicate}}</mat-cell>
+          </ng-container>
+          <!-- Unit # Column -->
+          <ng-container cdkColumnDef="unitNumber">
+            <mat-header-cell *cdkHeaderCellDef>Unit #</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showIncidentDetail(row.id)">{{row.unitNumber}}</span></mat-cell>
+          </ng-container>
+          <!-- Type Column -->
+          <ng-container cdkColumnDef="type">
+            <mat-header-cell *cdkHeaderCellDef>Type</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.type}}</mat-cell>
+          </ng-container>
+          <!-- Hose # Column -->
+          <ng-container cdkColumnDef="hoseNumber">
+            <mat-header-cell *cdkHeaderCellDef>Hose #</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.hoseNumber}}</mat-cell>
+          </ng-container>
+          <!-- Size Column -->
+          <ng-container cdkColumnDef="size">
+            <mat-header-cell *cdkHeaderCellDef>Size</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.size}}</mat-cell>
+          </ng-container>
+          <!-- Length Column -->
+          <ng-container cdkColumnDef="length">
+            <mat-header-cell *cdkHeaderCellDef>Length</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.length}}</mat-cell>
+          </ng-container>
+          <!-- Duration HH:MM Column -->
+          <ng-container cdkColumnDef="duration">
+            <mat-header-cell *cdkHeaderCellDef>Duration</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.duration}}</mat-cell>
+          </ng-container>
+          <!-- PSI Column -->
+          <ng-container cdkColumnDef="totalPSI">
+            <mat-header-cell *cdkHeaderCellDef>Total PSI</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.totalPSI}}</mat-cell>
+          </ng-container>
+          <!-- Delete Column -->
+          <ng-container cdkColumnDef="delete">
+            <mat-header-cell *cdkHeaderCellDef>Delete</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.delete}}</mat-cell>
+          </ng-container>
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <!-- need to revisit the button and <form> below; pages render but error with #Paginator  -->
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!-- Added Button along the bottom of page -->
+        <form>
+          <mat-card-actions style="margin-bottom: 15px;">
+            <div>
+              <button type="submit" mat-raised-button (click)= "submit('Query')">Query</button>
+              <button type="submit" mat-raised-button (click)= "submit('Add')">Add</button>
+            </div>
+          </mat-card-actions>
+        </form>
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+</div>

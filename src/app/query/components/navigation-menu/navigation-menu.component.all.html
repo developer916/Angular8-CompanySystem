@@ -1,0 +1,100 @@
+<div class="nav-menu">
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="queryMenu">Query</button>
+  <mat-menu #queryMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidents()">Query Incidents</button>
+    <button mat-menu-item (click)="queryIncidentsReview()">Query Review Incidents</button>
+    <button mat-menu-item (click)="queryIncidentsAutoClosed()">Query Auto Closed Incidents</button>
+    <button mat-menu-item (click)="queryIncidentsHazmat()">Query Hazmat Incidents</button>
+    <button mat-menu-item (click)="queryIncidentsControlledSubstanceInventory()">Query Controlled Substance Drug Control Number</button>
+    <button mat-menu-item (click)="queryIncidentsReviewControlledSubstanceInventory()">Query Review Controlled Substance Inventory</button>
+    <button mat-menu-item (click)="queryIncidentsUnitStatus()">Query Unit Status</button>
+    <button mat-menu-item (click)="queryIncidentsExposureReports()">Query Exposure Reports</button>
+    <button mat-menu-item (click)="queryIncidentsHydrantInspectionRecord()">Query Hydrant Inspection Record</button>
+    <button mat-menu-item (click)="queryIncidentsPreIncidentSurveys()">Query Pre-Incident Surveys</button>
+    <button mat-menu-item (click)="queryIncidentsHoseTestRecord()">Query Hose Test Record</button>
+    <button mat-menu-item (click)="queryIncidentsTrainingCalendar()">Query Training Calendar</button>
+    <button mat-menu-item (click)="queryIncidentsFieldDrillEntry()">Query Field Drill Entry</button>
+    <button mat-menu-item (click)="queryIncidentsFieldDrillReview()">Query Field Drill Review (Accept/Reject)</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="reportsMenu">Reports</button>
+  <mat-menu #reportsMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsReadOnly()">Query Read Only Incident Reports</button>
+    <button mat-menu-item (click)="queryIncidentsReadOnlyOccupancyReports()">Query Read Only Occupancy Reports</button>
+    <button mat-menu-item (click)="queryIncidentsInspectionViolationSummary()">Query Inspection Violation Summary</button>
+    <button mat-menu-item (click)="queryIncidentsOccupancyStructureSystem()">Query Occupancy Structure/Systems</button>
+    <button mat-menu-item (click)="queryIncidentsPublicReports()">Query Public Incident Reports</button>
+    <button mat-menu-item (click)="queryIncidentsControlledSubstanceAccountability()">Query Controlled Substance Accountability</button>
+    <button mat-menu-item (click)="queryIncidentsControlledSubstanceDailyUsage()">Query Controlled Substance Daily Usage</button>
+    <button mat-menu-item (click)="queryIncidentsControlledSubstanceDrugControlNumber()">Query Controlled Substance Drug Control Number</button>
+    <button mat-menu-item (click)="queryIncidentsReadOnlyUnitStatus()">Query Read Only Unit Status</button>
+    <button mat-menu-item (click)="queryIncidentsHydrantInspectionSummary()">Query Hydrant Inspection Summary</button>
+    <button mat-menu-item (click)="queryIncidentsPreIncidentSurveySummary()">Query Pre-Incident Survey Summary</button>
+    <button mat-menu-item (click)="queryIncidentsHoseTestSummary()">Query Hose Test Summary</button>
+    <button mat-menu-item (click)="queryIncidentsTrainingEvents()">Query Training Events</button>
+    <button mat-menu-item (click)="queryIncidentsTrainingContinuingEducation()">Query Training Continuing Education</button>
+   </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="summaryMenu">Summary</button>
+  <mat-menu #summaryMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item  (click)="queryIncidentsCallFrequencySummary()">Query Call Frequency Summary </button>
+    <button mat-menu-item (click)="queryIncidentsMutualAidSummary()">Query Mutual Aid Summary</button>
+    <button mat-menu-item (click)="queryIncidentsComparativeIncidentsSummary()">Query Comparative Incidents (Year-to-Year) Summary</button>
+    <button mat-menu-item (click)="queryIncidentsSummaryDetail()">Query Incidents Summary Detail</button>
+    <button mat-menu-item>Query Company Training Summary</button>
+    <button mat-menu-item>Query Individual Training Record</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="preventionMenu">Prevention</button>
+  <mat-menu #preventionMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item>Query Occupancy</button>
+    <button mat-menu-item>Query Linked Occupancies</button>
+    <button mat-menu-item>Query Projects</button>
+    <button mat-menu-item>Query Plan Review</button>
+    <button mat-menu-item>Query Inspections</button>
+    <button mat-menu-item>Query Annual Inspections</button>
+    <button mat-menu-item>Query Exterior Hazard Abatement</button>
+    <button mat-menu-item>Query Permits</button>
+    <button mat-menu-item>Query Journal Entry</button>
+    <button mat-menu-item>Query Administrative Citation</button>
+    <button mat-menu-item>Query Invoices</button>
+    <button mat-menu-item>Query Invoice Receipts</button>
+    <button mat-menu-item>Query Document Tracking</button>
+    <button mat-menu-item>Query Document Archive</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="archiveMenu">Archive</button>
+  <mat-menu #archiveMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsArchiveDocuments()">Query Incident Archive Documents</button>
+    <button mat-menu-item (click)="queryIncidentsManageIncidentArchiveAttachments()">Manage Incident Archive & Attachments </button>
+    <button mat-menu-item (click)="queryIncidentsHazmatDocumentArchive()">Query Hazmat Document Archive</button>
+    <button mat-menu-item (click)="queryIncidentsManageHazmatDocumentArchiveAttachments()">Manage HazMat Document Archive & Attachments </button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="cadMenu">CAD</button>
+  <mat-menu #cadMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsCadIncidents()">Query CAD Incidents</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="agencyMenu">Agency</button>
+  <mat-menu #agencyMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsAgencyPersonnel()">Query Agency Personnel</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyStations()">Query Agency Stations</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyUnits()">Query Agency Units</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyGlobalContacts()">Query Agency Global Contacts</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyMaintenanceUnits()">Query Agency Maintenance Units</button>
+    <button mat-menu-item (click)="queryIncidentsPrePlanInventory()">Query Pre-Plan Inventory</button>
+    <button mat-menu-item (click)="queryIncidentsHydrantInventory()">Query Hydrant Inventory</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyMaintenanceUnitHose()">Query Agency Maintenance Unit Hose</button>
+    <button mat-menu-item (click)="queryIncidentsMasterOccupancyInventory()">Query Occupancy</button>
+    <button mat-menu-item (click)="queryIncidentsAgencyDocumentTemplates()">Query Agency Document Templates</button>
+
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="securityMenu">Security</button>
+  <mat-menu #securityMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsUsers()">Query Users</button>
+    <button mat-menu-item (click)="queryIncidentsSecureReports()">Query Secure Reports</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="profileMenu">Profile</button>
+  <mat-menu #profileMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsChangePassword()">Change Password</button>
+  </mat-menu>
+  <button class="nav-menu-button" mat-button [matMenuTriggerFor]="extractMenu">Extract</button>
+  <mat-menu #extractMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="queryIncidentsExtractIncidentsNfirs()">NFIRS Extract</button>
+  </mat-menu>
+</div>

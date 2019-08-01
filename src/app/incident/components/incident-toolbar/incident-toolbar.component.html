@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+  <button class="toolbar-button" type="button" mat-icon-button (click)="back()">
+    <mat-icon matTooltip="Back">arrow_back</mat-icon>
+  </button>
+  <!--<button class="toolbar-button" type="submit" [disabled]="!formGroup.valid" mat-icon-button (click)="save()">-->
+  <button class="toolbar-button" type="submit" mat-icon-button (click)="save()">
+    <mat-icon matTooltip="Save">save</mat-icon>
+  </button>
+  <button class="toolbar-button" type="button" mat-icon-button (click)="print()">
+    <mat-icon matTooltip="Print">print</mat-icon>
+  </button>
+  <button class="toolbar-button" type="button" mat-icon-button (click)="home()">
+    <mat-icon matTooltip="Home">home</mat-icon>
+  </button> 
+  <button class="toolbar-button" type="button" mat-icon-button>
+    <mat-icon matTooltip="What do I do?">book</mat-icon>
+  </button>
+  <mat-form-field [floatLabel]="'never'" class="stdCallSelect">
+    <mat-select disableOptionCentering panelClass="stdCallPanel" (selectionChange)="callValueChanged($event.value)">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let call of this.getStandardCalls()" [value]="call.name">{{call.title}}</mat-option>
+    </mat-select>
+    <mat-label class="stdCallLabel">Standard Calls</mat-label>
+  </mat-form-field>
+  <span class="toolbar-fill-remaining-space"></span>
+  <mat-checkbox class="toolbar-content-right" [disabled]='isClosedDisabled()' (change)="closeIncident($event)">Closed</mat-checkbox>
+  <span class="toolbar-content-right" style="padding-top: 2px;">{{getActiveIncidentLabel()}}</span>
+</mat-toolbar>

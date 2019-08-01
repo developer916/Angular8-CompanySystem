@@ -1,0 +1,95 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Edit Agency Pre-Plan Inventory</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Pre-Plan Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Pre-Plan #"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.PrePlan'"
+                   [formControlName]="'prePlan'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="District"
+                        [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.District'"
+                        [formControlName]="'district'">
+              <mat-option *ngFor="let district of ['A', 'B', 'C']" [value]="district">{{district}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Group"
+                        [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Group'"
+                        [formControlName]="'group'">
+              <mat-option *ngFor="let group of [1, 2, 3]" [value]="group">{{group}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Inspection Cycle"
+                        [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.InspectionCycle'"
+                        [formControlName]="'inspectionCycle'">
+              <mat-option *ngFor="let inspectionCycle of ['Cycle 1', 'Cycle 2', 'Cycle 3']"[value]="inspectionCycle">{{inspectionCycle}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Location"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Location'"
+                   [formControlName]="'location'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="City"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.City'"
+                   [formControlName]="'city'" />
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Pre-Plan Document (Latest version)</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Name"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Name'"
+                   [formControlName]="'name'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Version"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Version'"
+                   [formControlName]="'version'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Stage"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.Stage'"
+                   [formControlName]="'stage'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Sent Date"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.SentDate'"
+                   [formControlName]="'sentDate'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Received Date"
+                   [id]="'Session.OS.AM.QBEAgencyPrePlanInventory.ReceivedDate'"
+                   [formControlName]="'receivedDate'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

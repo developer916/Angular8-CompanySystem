@@ -1,0 +1,520 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+//----------------- AoS Base Theme ------------------//
+//
+// This theme is the basis of the AoS Light/Dark themes
+//
+
+@mixin aos-base-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $readOnly: Blue;
+  $navBorder: darkgray;
+  $aosRequired: white;
+  $matFormFieldReadOnly: black;
+
+  // Global styles
+  a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $readOnly;
+  }
+
+  nav {
+    border-bottom: 1px solid $navBorder;
+    margin-bottom: 5px;
+  }
+
+  .nav-menu {
+    padding-right: 5px;
+    position: center;
+  }
+
+  .nav-menu-button {
+    text-align: center;
+    padding-right: 5px;
+  }
+
+  .nav-menu-button:hover {
+    color: $readOnly;
+  }
+
+  // Catch-all for required fields - if you don't know what else to use - use this
+  .aos-required {
+    color: mat-color($warn);
+    font-weight: bold;
+  }
+
+  .aos-required-inverted {
+    background-color: mat-color($warn);
+    font-weight: bold;
+    color: $aosRequired;
+    //border: 1px solid mat-color($warn);
+  }
+
+  // Adjust the height of the toolbar
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 40px;
+    padding-left: 5px;
+  }
+
+  // Colors and border for the Navigation Header
+  .nav-header {
+    background-color: mat-color($primary);
+  }
+
+  .nav-header-toolbar {
+    background-color: mat-color($primary);
+    border-top: 2px solid mat-color($accent);
+    border-bottom: 2px solid mat-color($accent);
+  }
+
+  .nav-header-theme-select .mat-form-field-infix {
+    border-top: 0em;
+    font-size: 14px;
+    padding: 0em;
+  }
+
+  .nav-header-theme-select mat-select {
+    font-weight: normal;
+  }
+
+  .stdCallSelect {
+    width: 400px;
+    margin-top: 0px !important;
+  }
+
+  .stdCallLabel {
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .stdCallPanel {
+    margin-top: 25px !important;
+    margin-left: 17px;
+    max-width: 400px !important;
+    min-width: 0px !important;
+  }
+
+  // We don't want opacity on tabs adjusted
+  .mat-tab-link {
+    height: 36px;
+    opacity: inherit;
+  }
+
+  mat-label {
+    font-size: 1em;
+  }
+
+  mat-select {
+    font-weight: bold;
+  }
+
+  mat-option {
+    font-weight: bold;
+  }
+
+  mat-card-actions {
+    margin-top: 0px;
+    //background-color: #336699;
+  }
+
+  // Colors and borders for the Fieldsets (i.e. card)
+  mat-card {
+    margin: 2px;
+    padding: 0px;
+    border: 1px solid mat-color($primary);
+  }
+
+  mat-card-title {
+    font-size: 1em;
+    text-align: left;
+    padding: 3px 5px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: $aosRequired;
+    background-color: mat-color($primary);
+  }
+
+  mat-card-content {
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+  }
+
+  // Fix for input field error messages
+  mat-error {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: -17px; // A hack to get this positioned nicely
+    margin-bottom: 10px;
+  }
+
+  // Colors for Tabs
+  //JAV
+  .active-tab {
+    border-bottom: 3px solid mat-color($accent) !important;
+  }
+
+  // The following fixes coloring for invalid fields
+  .mat-warn .mat-input-element, .mat-form-field-invalid .mat-input-element, mat-form-field.ng-invalid label {
+    color: mat-color($warn) !important;
+    font-weight: bold;
+  }
+
+  // This provides the thick underline on required fields
+  mat-form-field.ng-invalid .mat-form-field-underline,
+  mat-form-field.ng-invalid .mat-form-field-ripple,
+  mat-form-field.ng-invalid .mat-focused .mat-form-field-underline,
+  mat-form-field.ng-invalid .mat-focused .mat-form-field-ripple,
+  .mat-form-field-invalid  .mat-form-field-underline,
+  .mat-form-field-invalid  .mat-form-field-ripple,
+  .mat-form-field-invalid  .mat-focused .mat-form-field-underline,
+  .mat-form-field-invalid  .mat-focused .mat-form-field-ripple {
+    background-color: mat-color($warn) !important;
+    border-bottom: 2px solid mat-color($warn) !important;
+  }
+
+  .mat-form-field-disabled .mat-input-element .mat-form-field-infix, input:disabled .mat-input-element .mat-form-field-infix {
+    font-weight: lighter !important;
+  }
+
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: $matFormFieldReadOnly !important;
+    font-weight: bold;
+  }
+
+  .fr-box.fr-basic .fr-wrapper {
+    background-color: white;
+  }
+
+  .fr-wrapper .fr-disabled {
+    background-color: $readOnly;
+    color: white;
+  }
+
+  mat-form-field.ng-invalid div.mat-input-underline {
+    background-color: mat-color($warn) !important;
+  }
+
+  // Fixes issues on query page
+  mat-form-field.mat-form-field-appearance-outline div.mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  mat-form-field {
+    font-weight: bold;
+    padding-left: 5px;
+    margin-top: 8px;
+  }
+
+  // Fix Select width
+  .mat-form-field-infix {
+    width: 100%;
+    font-weight: lighter;
+    //padding: .5em 0px;
+  }
+
+  .mat-select-value {
+    max-width: inherit;
+    width: inherit;
+  }
+
+  .mat-form-field .mat-select-trigger {
+    width: 100%;
+  }
+
+  .mat-input-element {
+    font-weight: bold;
+    padding-left: 5px;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .mat-form-field-label {
+    font-style: italic;
+    text-align: left;
+  }
+
+  .mat-readonly .mat-select-placeholder, .mat-readonly label, .mat-readonly .mat-input-placeholder {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 2px;
+  }
+
+  .mat-select-placeholder, label, .mat-input-placeholder {
+    padding-left: 5px;
+    padding-top: 2px;
+  }
+
+  .mat-readonly .mat-select-arrow, .mat-select-arrow {
+    padding-left: 2px
+  }
+
+
+  .aos-required label div .mat-checkbox-frame {
+    border-color: mat-color($warn);
+    //border-color: chartreuse;
+  }
+
+
+
+  .mat-checkbox-label {
+    font-weight: bold;
+  }
+
+  //.mat-checkbox-inner-container {
+  //  background-color: ghostwhite;
+  //}
+
+  .mat-radio-label-content {
+    font-weight: bold;
+  }
+
+  // Fix for vertical alignment of date fields
+  mat-form-field.date div.mat-form-field-infix {
+    margin-bottom: -1px;
+    //margin-top: 10px;
+  }
+
+  // List-Detail styling
+  th {
+    color: mat-color($accent);
+  }
+
+  //.aos-list-detail-selected {
+  //  background-color: lightgrey;
+  //}
+
+  // CAD table styling
+  .cad-table-content {
+    color: $readOnly !important;
+    font-weight: bold;
+  }
+
+  .mat-row {
+    min-height: 24px;
+  }
+
+
+
+
+
+
+
+}
+
+
+/*****----------------- AoS Light Theme -----------------******/
+$aos-light-primary: mat-palette($mat-blue-grey, 600, 100, 500);
+$aos-light-accent:  mat-palette($mat-blue-grey, 600);
+$aos-light-warn: mat-palette($mat-red, 800, 400, 900);
+$aos-light-theme: mat-light-theme($aos-light-primary, $aos-light-accent, $aos-light-warn);
+
+
+.aos-light-theme {
+  @include angular-material-theme($aos-light-theme);
+  @include aos-base-theme($aos-light-theme);
+  $navBackground: #336699;
+  $color: ghostwhite;
+  $formFieldBackground: #546E7A;
+  $queryBackground: #336699;
+  $matFormFieldReadOnlyLabel: grey;
+  $matFormField: black;
+  $matReadonlyFormFieldInfixBackground: blue;
+  $stdCallSelect: white;
+  $incidentListHeader: #004477;
+  $cardBackground: #EFEFEF;
+  $mat-checkbox-inner-container: ghostwhite;
+
+
+  //.nav-menu {
+  //  background-color: white;
+ // }
+
+  //.incident-list-header {
+  //  font-weight: bold;
+  //  color: #004477;
+  //  font-size: 1em;
+  //}
+  // Navigation Menu Styling
+  .nav-menu {
+    background-color: $navBackground;
+    color: $color;
+  }
+
+  .nav-header {
+    background-color: $navBackground;
+  }
+
+  .nav-header-theme-select .mat-form-field-infix {
+    background-color: $formFieldBackground;
+  }
+
+  .nav-header-theme-select .mat-form-field-underline,
+  .nav-header-theme-select .mat-form-field-ripple,
+  .nav-header-theme-select .mat-focused .mat-form-field-underline,
+  .nav-header-theme-select .mat-focused .mat-form-field-ripple {
+    background-color: $formFieldBackground !important;
+  }
+
+
+  .stdCallSelect .mat-form-field-infix {
+    background-color: $color;
+    height: .9em;
+  }
+
+
+  .incident-list-header, .incident-list-result-count {
+    color:$incidentListHeader;
+  }
+
+  .mat-card-content {
+    //background-color: #ccddee;
+    background-color: $cardBackground;
+  }
+
+  .mat-card {
+    //background: #ccddee;
+    background: $cardBackground;
+  }
+
+  .query-card-title {
+    background-color: $queryBackground;
+  }
+
+  .mat-radio-outer-circle {
+    background-color: $color;
+  }
+
+  .mat-form-field-wrapper {
+    //margin: 2px;
+    padding-bottom: 0px;
+    background-color: $color;
+    //border-radius: 5px;
+  }
+
+  input.mat-input-element {
+    margin-top: .25em;
+  }
+
+
+  .mat-form-field-underline {
+    position: static;
+  }
+
+
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: $matFormFieldReadOnlyLabel !important;
+    font-weight: normal;
+  }
+
+  .mat-form-field {
+    color: $matFormField
+    //font-weight: bold;
+  }
+
+  // Select Form Field Styling
+  .mat-select-value {
+    //color: #336699;
+    color: $matFormField;
+    //font-weight: bold;
+  }
+
+  .mat-select-arrow {
+    color: $navBackground;
+  }
+
+
+  mat-form-field .mat-readonly {
+    color: $color !important;
+  }
+
+  .mat-readonly .mat-input-element {
+    color: $color !important;
+  }
+
+  .mat-readonly .mat-select-placeholder, .mat-readonly .mat-select-arrow, .mat-readonly label, .mat-readonly .mat-input-placeholder {
+    color: $color !important;
+  }
+
+  .mat-readonly .mat-form-field-infix {
+    background-color: $matReadonlyFormFieldInfixBackground;
+  }
+
+  .mat-checkbox-inner-container {
+    background-color: $mat-checkbox-inner-container;
+  }
+
+  // This styles the underlines --- https://stackoverflow.com/questions/50786787/how-to-change-mat-form-field-border-color-in-angular-material?rq=1
+  .mat-readonly .mat-form-field-underline,
+  .mat-readonly .mat-form-field-ripple,
+  .mat-readonly .mat-focused .mat-form-field-underline,
+  .mat-readonly .mat-focused .mat-form-field-ripple {
+    background-color: $matFormField !important;
+  }
+
+  .stdCallSelect .mat-form-field-underline,
+  .stdCallSelect .mat-form-field-ripple,
+  .stdCallSelect .mat-focused .mat-form-field-underline,
+  .stdCallSelect .mat-focused .mat-form-field-ripple {
+    background-color: $stdCallSelect !important;
+  }
+
+}
+
+/*****----------------- AoS Dark Theme -----------------******/
+$aos-dark-primary: mat-palette($mat-blue-grey, 600, 100, 500);
+$aos-dark-accent: mat-palette($mat-blue-grey, 600);
+$aos-dark-theme: mat-dark-theme($aos-dark-primary, $aos-dark-accent, $aos-light-warn);
+
+.aos-dark-theme {
+  @include angular-material-theme($aos-dark-theme);
+  @include aos-base-theme($aos-dark-theme);
+  $navMenuBackgroundDark: black;
+  $matFormFieldReadOnlyLabel: white;
+  $matFormFieldReadOnly: steelblue;
+
+
+  .nav-menu {
+    background-color: $navMenuBackgroundDark;
+  }
+
+  mat-form-field.ng-valid:not(.mat-readonly) label {
+    color: $matFormFieldReadOnlyLabel !important;
+    font-weight: bold;
+  }
+
+  mat-form-field .mat-readonly {
+    color: $matFormFieldReadOnly  !important;
+    font-weight: bold;
+  }
+
+  .mat-readonly .mat-input-element {
+    color: $matFormFieldReadOnly !important;
+    font-weight: bold;
+  }
+
+  .mat-readonly .mat-select-placeholder, .mat-readonly .mat-select-arrow, .mat-readonly label, .mat-readonly .mat-input-placeholder {
+    color: $matFormFieldReadOnly !important;
+    font-weight: normal;
+  }
+
+  .cad-table-content {
+    color: $matFormFieldReadOnly !important;
+    font-weight: bold;
+  }
+
+  .incident-list-header {
+    font-weight: bold;
+    color: $matFormFieldReadOnly;
+    font-size: 1em;
+  }
+}

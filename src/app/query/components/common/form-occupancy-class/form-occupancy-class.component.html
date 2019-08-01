@@ -1,0 +1,10 @@
+<div class="form-occupancy-class">
+  <mat-form-field>
+    <mat-label>Occupancy Class</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancy.OccupancyClass'"
+                [formControlName]="'occupancyClass'">
+      <mat-option *ngFor="let occupancy of ['A-1', 'A-2', 'A-3']" [value]="occupancy" >{{occupancy}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

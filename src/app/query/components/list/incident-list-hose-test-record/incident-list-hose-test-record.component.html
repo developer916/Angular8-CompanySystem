@@ -1,0 +1,112 @@
+
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Hose Test Record</mat-card-title>
+    <mat-card-content style="margin-top: 10px">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!-- Print Column with Checkbox in body -->
+          <ng-container cdkColumnDef="print">
+            <mat-header-cell *cdkHeaderCellDef>Print</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.print}}</mat-cell>
+          </ng-container>
+
+          <!--Hose Test Record Column with link -->
+          <ng-container cdkColumnDef="hoseTestRecord">
+            <mat-header-cell *cdkHeaderCellDef>Hose Test Record</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showIncidentDetailRecord(row.id)">{{row.hoseTestRecord}}</span></mat-cell>
+          </ng-container>
+
+          <!-- Hose Test Report Column with link -->
+          <ng-container cdkColumnDef="hoseTestReport">
+            <mat-header-cell *cdkHeaderCellDef>Hose Test Report</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span class="detailLink" (click)="showIncidentDetailReport(row.id)">{{row.hoseTestReport}}</span></mat-cell>
+          </ng-container>
+
+          <!-- Unit Column with dropdown list in body -->
+          <ng-container cdkColumnDef="unit">
+            <mat-header-cell *cdkHeaderCellDef>Unit</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.unit}}</mat-cell>
+          </ng-container>
+
+          <!--Station Column with dropdown list in body -->
+          <ng-container cdkColumnDef="station">
+            <mat-header-cell *cdkHeaderCellDef>Station</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.station}}</mat-cell>
+          </ng-container>
+
+          <!-- Officer ID Column -->
+          <ng-container cdkColumnDef="officerID">
+            <mat-header-cell *cdkHeaderCellDef>Officer ID</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.officerID}}</mat-cell>
+          </ng-container>
+
+          <!-- Officer Name column -->
+          <ng-container cdkColumnDef="officerName">-
+            <mat-header-cell *cdkHeaderCellDef>Officer Name</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.officerName}}</mat-cell>
+          </ng-container>
+
+          <!-- Due Date Column -->
+          <ng-container cdkColumnDef="dueDate">
+            <mat-header-cell *cdkHeaderCellDef>Due Date</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.dueDate}}</mat-cell>
+          </ng-container>
+
+          <!-- Total Tested Column -->
+          <ng-container cdkColumnDef="totalTested">
+            <mat-header-cell *cdkHeaderCellDef>Total Tested</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.totalTested}}</mat-cell>
+          </ng-container>
+
+          <!-- Total Remaining column -->
+          <ng-container cdkColumnDef="totalRemaining">
+            <mat-header-cell *cdkHeaderCellDef>Total Remaining</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.totalRemaining}}</mat-cell>
+          </ng-container>
+
+          <!-- Comment Column -->
+          <ng-container cdkColumnDef="comment">
+            <mat-header-cell *cdkHeaderCellDef>Comment</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.comment}}</mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>>
+
+        </mat-table>
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!--Three Buttons along the bottom of page; Return, Save, Print Buttons -->
+        <mat-card-actions style="margin-bottom: 15px;">
+          <div style="width:33%; float:left">
+            <button type="button" mat-raised-button>Return</button>
+          </div>
+          <div style="width:33%; float:left">
+            <button type="button" mat-raised-button>Save</button>
+          </div>
+          <div style="width:33%; float:left">
+            <button type="button" mat-raised-button>Print</button>
+          </div>
+        </mat-card-actions>
+
+      </div>
+
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+
+</div>

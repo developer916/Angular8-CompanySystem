@@ -1,0 +1,57 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Pre-Plan Inventory</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Pre-Plan #</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-preplan-number></app-form-preplan-number>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Pre-Plan Group</h3>
+            </td>
+            <td>
+              <h3>Search by Inspection Cycle</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-preplan-group></app-form-preplan-group>
+            </td>
+            <td>
+              <app-form-inspection-cycle></app-form-inspection-cycle>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button (click)= "submit()">Query</button>
+          <button type="submit" mat-raised-button (click)= "submitAdd()">Add</button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

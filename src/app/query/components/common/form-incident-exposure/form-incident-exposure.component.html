@@ -1,0 +1,15 @@
+<div class="form-incident-exposure">
+  <mat-form-field style="width:40%; min-width: 130px;">
+    <mat-label>Incident</mat-label>
+    <input matInput
+           [id]="'aos.query.common.incidentNumber'"
+           [formControlName]="'incidentNumber'"/>
+  </mat-form-field>
+  <span>&mdash;</span> <!-- create CSS in query-module-css margin-left: 15px; -->
+  <mat-form-field style="width:20%; min-width: 60px;">
+    <mat-label>Exposure</mat-label>
+    <input matInput
+           [id]="'aos.query.common.exposureNumber'"
+           [formControlName]="'exposureNumber'"/>
+  </mat-form-field>
+</div>

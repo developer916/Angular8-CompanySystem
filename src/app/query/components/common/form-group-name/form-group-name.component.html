@@ -1,0 +1,10 @@
+<div class="form-group-name">
+  <mat-form-field>
+    <mat-label>Group Name</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEUsers.GroupName'"
+                [formControlName]="'groupName'">
+      <mat-option *ngFor="let groupName of ['Unit', 'Captain', 'Admin']" [value]="groupName">{{groupName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

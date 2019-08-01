@@ -1,0 +1,10 @@
+<div class="form-fiscal-year">
+  <mat-form-field>
+    <mat-label>Fiscal Year</mat-label>
+    <mat-select
+                [id]="'Session.OS.IM.QBEIncidentsSummary.FiscalYear'"
+                [formControlName]="'fiscalYear'" >
+      <mat-option *ngFor="let fiscalYear of [2018, 2018, 2019, 2020]" [value]="fiscalYear">{{fiscalYear}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

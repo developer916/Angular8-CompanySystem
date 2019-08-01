@@ -1,0 +1,10 @@
+<div class="form-property-use">
+  <mat-form-field>
+    <mat-label>Property Use</mat-label>
+      <mat-select
+                 [id]="'Session.OS.PM.QBEOccupancyStructureSystem.PropertyUse'"
+                 [formControlName]="'propertyUse'">
+        <mat-option *ngFor="let propertyUse of ['Other', 'Fixed Use','Bowling' ]" [value]="propertyUse">{{propertyUse}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>

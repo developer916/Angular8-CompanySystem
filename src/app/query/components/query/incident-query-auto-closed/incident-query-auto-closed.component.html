@@ -1,0 +1,47 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Incident for Auto-Closed</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+        <tr class="header">
+          <td colspan="2">
+            Search by Incident Number, Exposure(Incident-Exposure)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-form-incident-exposure></app-form-incident-exposure>
+          </td>
+          <td>
+            <app-form-year></app-form-year>
+          </td>
+        </tr>
+      </table>
+      </mat-card-content>
+
+      <!-- move the styles to a class query-card-actions -->
+      <mat-card-actions>
+        <div>
+          <!-- see if we can theme the mat-raised-button at the custom-theme.scss -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </form>
+
+</div>
+
+
+
+

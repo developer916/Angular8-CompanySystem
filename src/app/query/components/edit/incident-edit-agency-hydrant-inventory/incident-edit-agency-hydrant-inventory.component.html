@@ -1,0 +1,77 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Eidt Agency Hydrant Inventory</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Hydrant Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Hydrant #"
+                   [id]="'Session.OS.AM.QBEAgencyHydrantInventory.HydrantNumber'"
+                   [formControlName]="'hydrantNumber'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Map Page"
+                   [id]="'Session.OS.AM.QBEAgencyHydrantInventory.MapPage'"
+                   [formControlName]="'mapPage'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Hydrant Group"
+                        [id]="'Session.OS.AM.QBEAgencyHydrantInventory.HydrantGroup'"
+                        [formControlName]="'hydrantGroup'">
+              <mat-option *ngFor="let hydrantGroup of [1,2,3,4]" [value]="hydrantGroup">{{hydrantGroup}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Inspection Cycle"
+                        [id]="'Session.OS.AM.QBEAgencyHydrantInventory.InspectionCycle'"
+                        [formControlName]="'inspectionCycle'">
+              <mat-option *ngFor="let inspectionCycle of [1,2,3,4]" [value]="inspectionCycle">{{inspectionCycle}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Station"
+                        [id]="'Session.OS.AM.QBEAgencyHydrantInventory.Station'"
+                        [formControlName]="'station'">
+              <mat-option *ngFor="let station of [1,2,3,4]" [value]="station">{{station}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="City"
+                   [id]="'Session.OS.AM.QBEAgencyHydrantInventory.City'"
+                   [formControlName]="'city'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Hydrant Location Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Street Highway"
+                   [id]="'Session.OS.AM.QBEAgencyHydrantInventory.StreetHighway'"
+                   [formControlName]="'streetHighway'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Cross Street"
+                   [id]="'Session.OS.AM.QBEAgencyHydrantInventory.CrossStreet'"
+                   [formControlName]="'crossStreet'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

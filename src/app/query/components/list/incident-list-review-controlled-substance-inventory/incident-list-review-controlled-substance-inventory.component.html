@@ -1,0 +1,80 @@
+
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <mat-card>
+    <mat-card-title class="query-card-title">Review Controlled Substance Inventory</mat-card-title>
+    <mat-card-content style="margin-top: 10px">
+      <div class="list-container">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!-- Due Date Column -->
+          <ng-container cdkColumnDef="dueDate">
+            <mat-header-cell *cdkHeaderCellDef>Due Date</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.dueDate}}</mat-cell>
+          </ng-container>
+
+          <!-- Unit # Column -->
+          <ng-container cdkColumnDef="unitNumber">
+            <mat-header-cell *cdkHeaderCellDef>Unit #</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.unitNumber}}</mat-cell>
+          </ng-container>
+
+          <!-- Unit ID Column -->
+          <ng-container cdkColumnDef="unitID">
+            <mat-header-cell *cdkHeaderCellDef>Unit ID</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.unitID}}</mat-cell>
+          </ng-container>
+
+          <!-- Report by ID Column-->
+          <ng-container cdkColumnDef="reportByID">
+            <mat-header-cell *cdkHeaderCellDef>Report By ID*</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.reportByID}}</mat-cell>
+          </ng-container>
+
+          <!-- Report By Name Column -->
+          <ng-container cdkColumnDef="reportByName">
+            <mat-header-cell *cdkHeaderCellDef>Report By Name</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.reportByName}}</mat-cell>
+          </ng-container>
+
+          <!-- Closed Column -->
+          <ng-container cdkColumnDef="closed">
+            <mat-header-cell *cdkHeaderCellDef>Closed</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.closed}}</mat-cell>
+          </ng-container>
+
+          <!-- Accountability Column -->
+          <ng-container cdkColumnDef="accountability">
+            <mat-header-cell *cdkHeaderCellDef>Accountability</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{row.accountability}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row class="aos-query-row" *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+
+        <mat-paginator #paginator
+                       [length]="incidentQueryDatabase.data.length"
+                       [pageIndex]="0"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+        <hr style="clear:both">
+
+        <!-- Save Button along the bottom of page -->
+        <mat-card-actions>
+          <div>
+            <button type="submit" mat-raised-button>Save</button>
+          </div>
+        </mat-card-actions>
+        <mat-card-footer></mat-card-footer>
+
+      </div>
+    </mat-card-content>
+    <hr style="clear:both">
+  </mat-card>
+</div>

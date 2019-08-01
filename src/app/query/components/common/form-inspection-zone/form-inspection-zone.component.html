@@ -1,0 +1,10 @@
+<div class="form-inspection-zone">
+  <mat-form-field>
+    <mat-label>Inspection Zone</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancy.InspectionZone'"
+                [formControlName]="'inspectionZone'">
+      <mat-option *ngFor="let zone of ['Zone 1', 'Zone 2', 'Zone 3']" [value]="zone">{{zone}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

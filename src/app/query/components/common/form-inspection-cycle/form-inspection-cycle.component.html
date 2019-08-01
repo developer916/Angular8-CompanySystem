@@ -1,0 +1,10 @@
+<div class="form-inspection-cycle">
+  <mat-form-field>
+    <mat-label>Inspection Cycle</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancy.InspectionCycle'"
+                [formControlName]="'inspectionCycle'">
+      <mat-option *ngFor="let inspection of ['Annual Cycle', 'On Demand', 'EHA Annual']" [value]="inspection">{{inspection}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,43 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Occupancy</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Occupancy #</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-occupancy-numbers></app-form-occupancy-numbers>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-max-results></app-form-max-results>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button (click)= "submit('Query')">Query</button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

@@ -1,0 +1,78 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Hydrant Inventory</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Station</h3>
+            </td>
+            <td>
+              <h3>Search by City</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-station></app-form-station>
+            </td>
+            <td>
+              <app-form-city></app-form-city>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Map Page (Begins with)</h3>
+            </td>
+            <td>
+              <h3>Search by Hydrant #</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-map-page></app-form-map-page>
+            </td>
+            <td>
+              <app-form-hydrant-number></app-form-hydrant-number>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Hydrant Group</h3>
+            </td>
+            <td>
+              <h3>Search by Inspection Cycle</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-hydrant-group></app-form-hydrant-group>
+            </td>
+            <td>
+              <app-form-inspection-cycle></app-form-inspection-cycle>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button (click)= "submit()">Query</button>
+          <button type="submit" mat-raised-button (click)= "submitAdd()">Add</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

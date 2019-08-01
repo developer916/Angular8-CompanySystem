@@ -1,0 +1,92 @@
+<div style="text-align:center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Hydrant Inspection Record</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Date</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-inspection-quarter></app-form-inspection-quarter>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search By Station</h3>
+            </td>
+            <td>
+              <h3>Search By Shift</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-station></app-form-station>
+            </td>
+            <td>
+              <app-form-shift></app-form-shift>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search By Hydrant Number</h3>
+            </td>
+            <td>
+              <h3>Search By Hydrant Group</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-hydrant-number></app-form-hydrant-number>
+            </td>
+            <td>
+              <app-form-hydrant-group></app-form-hydrant-group>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search By Map</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-map-page></app-form-map-page>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+
+    </mat-card>
+  </form>
+</div>

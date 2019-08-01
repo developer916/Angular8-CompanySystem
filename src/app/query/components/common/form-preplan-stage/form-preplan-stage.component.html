@@ -1,0 +1,10 @@
+<div class="form-preplan-stage">
+  <mat-form-field>
+    <mat-label>Preplan Stage</mat-label>
+    <mat-select
+                [id]="'Session.OS.IM.QBEPreIncidentSurveys.PrePlanStage'"
+                [formControlName]="'prePlanStage'">
+      <mat-option *ngFor="let prePlanStage of ['Survey', 'Filed', 'Out for Correction']" [value]="prePlanStage" >{{prePlanStage}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,10 @@
+<div class="form-chemical-name">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Chemical Name</mat-label>
+      <mat-select
+              [id]="'aos.query.common.chemicalName'"
+              [formControlName]="'chemicalName'" >
+        <mat-option *ngFor="let chemicalName of ['Name 1','Name 2','Name 2']" [value]="chemicalName" >{{chemicalName}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>

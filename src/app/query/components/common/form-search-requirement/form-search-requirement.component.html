@@ -1,0 +1,10 @@
+<div class="form-search-requirement">
+  <mat-form-field>
+    <mat-label>Requirement</mat-label>
+    <mat-select
+                [id]="'Session.OS.TM.QBETrainingCalendar.EventRequirement1'"
+                [formControlName]="'requirement'">
+      <mat-option *ngFor="let requirement of ['CAL OSHA', 'CBC', 'CDC']" [value]="requirement" >{{requirement}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

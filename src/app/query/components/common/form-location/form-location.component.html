@@ -1,0 +1,10 @@
+<div class="form-location">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Location</mat-label>
+    <mat-select
+                [id]="'Session.OS.IM.QBEMaintenanceUnitAccountability.Location'"
+                [formControlName]="'location'">
+      <mat-option *ngFor="let location of ['Station A', 'Station B', 'Station C']" [value]="location" >{{location}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

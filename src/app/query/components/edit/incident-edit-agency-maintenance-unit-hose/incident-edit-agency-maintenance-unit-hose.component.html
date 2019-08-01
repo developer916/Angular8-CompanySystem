@@ -1,0 +1,68 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Edit Unit # Hose</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Hose Info</h3>
+          <mat-form-field>
+            <mat-select placeholder="Unit #"
+                        [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.UnitNumber'"
+                        [formControlName]="'unitNumber'">
+              <mat-option *ngFor="let unitNumber of [1,2,3,4]" [value]="unitNumber">{{unitNumber}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Hose #"
+                   [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.HoseNumber'"
+                   [formControlName]="'hoseNumber'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Type"
+                        [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.Type'"
+                        [formControlName]="'type'">
+              <mat-option *ngFor="let type of ['Yellow', 'Red', 'Other']" [value]="type">{{type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Size"
+                        [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.Size'"
+                        [formControlName]="'size'">
+              <mat-option *ngFor="let size of [1,2,3,4]" [value]="size">{{size}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Length Feet"
+                   [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.Length'"
+                   [formControlName]="'length'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Test Duration(HH:MM)"
+                   [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.TestDuration'"
+                   [formControlName]="'testDuration'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Test PSI"
+                   [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.TestPSI'"
+                   [formControlName]="'testPSI'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

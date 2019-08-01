@@ -1,0 +1,8 @@
+<div class="nav-menu">
+  <ng-container *ngFor="let menu of getQueryMenus()">
+    <button class="nav-menu-button" mat-button [matMenuTriggerFor]="queryMenu">{{menu.name}}</button>
+    <mat-menu #queryMenu="matMenu" [overlapTrigger]="false">
+      <button *ngFor="let menuItem of menu.items" mat-menu-item (click)="routeToQueryPage(menuItem.path)">{{menuItem.name}}</button>
+    </mat-menu>
+  </ng-container>
+</div>

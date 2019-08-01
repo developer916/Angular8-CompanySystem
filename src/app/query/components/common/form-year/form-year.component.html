@@ -1,0 +1,10 @@
+<div class="form-year">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Year</mat-label>
+    <mat-select
+                 [id]="'aos.query.common.year'"
+                 [formControlName]="'year'">
+      <mat-option *ngFor="let year of getYears()" [value]="year" >{{year}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,10 @@
+<div class="formIncidentType">
+  <mat-form-field style="width:60%; min-width: 100px">
+    <mat-label>Incident Type</mat-label>
+    <mat-select
+                [id]="'aos.query.common.incidentType'"
+                [formControlName]="'incidentTypeCode'" >
+      <mat-option *ngFor="let incidentType of ['Option A','Option B', 'Option C']" [value]="incidentType" >{{incidentType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

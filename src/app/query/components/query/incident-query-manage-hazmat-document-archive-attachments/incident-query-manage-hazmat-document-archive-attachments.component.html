@@ -1,0 +1,137 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Manage HazMat Document Archive & Attachments</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Set Date Range</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-offset></app-form-date-offset>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Incident, Exposure Number (Incident - Exposure)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-incident-exposure></app-form-incident-exposure>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Unit</h3>
+            </td>
+            <td>
+              <h3>Search by Personnel ID</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-unit></app-form-unit>
+            </td>
+            <td>
+              <app-form-personnel-id></app-form-personnel-id>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by HazMat Chemicals (Select Chemical Name or enter Start of Chemical Name)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-chemical-name></app-form-chemical-name>
+            </td>
+            <td>
+              <app-form-dot-class></app-form-dot-class>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-chemical-begins-with></app-form-chemical-begins-with>
+            </td>
+            <td>
+              <app-form-container-type></app-form-container-type>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-un-number></app-form-un-number>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Address (Begins with: 4 M = 400 Main or 41 Market)</h3>
+            </td>
+            <td>
+              <h3>Search by City</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-address></app-form-address>
+            </td>
+            <td>
+              <app-form-city></app-form-city>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Set Max Incidents</h3>
+            </td>
+            <td>
+              <h3>Set Status</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-max-results></app-form-max-results>
+            </td>
+            <td>
+              <app-form-status></app-form-status>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

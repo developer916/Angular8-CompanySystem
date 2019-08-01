@@ -1,0 +1,171 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Agency Personnel</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Personal Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="ID"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.PersonnelID'"
+                   [formControlName]="'personnelID'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="First Name"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.FirstName'"
+                   [formControlName]="'firstName'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="M"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.MiddleInitial'"
+                   [formControlName]="'middleInitial'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Last Name"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.LastName'"
+                   [formControlName]="'lastName'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Suffix"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Suffix'"
+                        [formControlName]="'suffix'" >
+              <mat-option *ngFor="let suffix of ['Mr.', 'Mrs,', 'Miss', 'Ms.']" [value]="suffix">{{suffix}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Rank"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Rank'"
+                        [formControlName]="'rank'" >
+              <mat-option *ngFor="let rank of ['A', 'B', 'C']" [value]="rank">{{rank}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="or Title"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.Title'"
+                   [formControlName]="'title'" />
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Certification Level (Medical)</h3>
+          <mat-form-field>
+            <mat-select placeholder="Level"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Level'"
+                        [formControlName]="'level'" >
+              <mat-option *ngFor="let level of ['High', 'Medium', 'Low']" [value]="level">{{level}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Confidential Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Birth Date"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.BirthDate'"
+                   [formControlName]="'birthDate'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Gender"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Gender'"
+                        [formControlName]="'gender'" >
+              <mat-option *ngFor="let gender of ['Male', 'Female', 'Other']" [value]="gender">{{gender}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Agency Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Employment Date"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.EmploymentDate'"
+                   [formControlName]="'employmentDate'" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Type"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Type'"
+                        [formControlName]="'type'" >
+              <mat-option *ngFor="let type of ['Full-Time', 'Part-Time', 'Seasonal']" [value]="type">{{type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Shift"
+                        [id]="'Session.OS.AM.QBEAgencyPersonnel.Type'"
+                        [formControlName]="'shift'" >
+              <mat-option *ngFor="let shift of ['First', 'Second', 'Third']" [value]="shift">{{shift}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Unit ID"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.UnitID'"
+                   [formControlName]="'unitID'" >
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Contact Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Office Phone"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.OfficePhone'"
+                   [formControlName]="'officePhone'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Mobile"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.Mobile'"
+                   [formControlName]="'mobile'" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Email"
+                   [id]="'Session.OS.AM.QBEAgencyPersonnel.Email'"
+                   [formControlName]="'email'" />
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+        <div>
+          <h3>Training Profile Info</h3>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyPersonnel.Recruit'"
+                        [disableRipple]="true"
+                        [formControlName]="'recruit'">
+            Recruit
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyPersonnel.NewDriverOperator'"
+                        [disableRipple]="true"
+                        [formControlName]="'newDriverOperator'" >
+            New Driver Operator
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyPersonnel.Paramedic'"
+                        [disableRipple]="true"
+                        [formControlName]="'paramedic'">
+            Paramedic
+          </mat-checkbox>
+          <mat-checkbox [id]="'Session.OS.AM.QBEAgencyPersonnel.EMT'"
+                        [disableRipple]="true"
+                        [formControlName]="'emt'" >
+            EMT
+          </mat-checkbox>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

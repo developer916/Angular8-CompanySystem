@@ -1,0 +1,129 @@
+<div style="text-align:center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Call Frequency Summary</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Select Report Type</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-call-frequency></app-form-call-frequency>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Select By Date</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-search-month></app-form-search-month>
+            </td>
+            <td>
+              <app-form-inspection-quarter></app-form-inspection-quarter>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-fiscal-year></app-form-fiscal-year>
+            </td>
+            <td>
+              <app-form-year></app-form-year>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-range></app-form-date-range>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-date-offset></app-form-date-offset>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td>
+              <h3>Search by Unit(s), Station (Units at Station)</h3>
+            </td>
+            <td>
+              <h3>Search by Battalion, Division</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-unit></app-form-unit>
+            </td>
+            <td>
+              <app-form-battalion></app-form-battalion>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-station></app-form-station>
+            </td>
+            <td>
+              <app-form-division></app-form-division>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Zone</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-zone></app-form-zone>
+            </td>
+            <td>
+              <app-form-dispatch-zone></app-form-dispatch-zone>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-district></app-form-district>
+            </td>
+            <td>
+              <app-form-urban-suburban-rural></app-form-urban-suburban-rural>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Shift</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-shift></app-form-shift>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+
+      <!-- moved to style to Custom Themes -->
+      <mat-card-actions>
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button>Query</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

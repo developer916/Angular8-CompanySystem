@@ -1,0 +1,91 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+
+  <form *ngIf="formGroup != null" (ngSubmit)="submit(buttonType)" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Users</mat-card-title>
+      <mat-card-content class="query-card-style">
+        <table style="width: 100%">
+          <colgroup>
+            <col width="50%" />
+            <col width="50%" />
+          </colgroup>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Id, Name (Begins with)</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-user-id></app-form-user-id>
+            </td>
+            </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-first-name></app-form-first-name>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-last-name></app-form-last-name>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Rank</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-search-rank></app-form-search-rank>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Group Name</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <app-form-group-name></app-form-group-name>
+            </td>
+          </tr>
+
+          <tr class="header">
+            <td colspan="2">
+              <h3>Search by Privileges</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-administrator></app-form-administrator>
+            </td>
+            <td>
+              <app-form-report-builder></app-form-report-builder>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <app-form-access-encrypted-data></app-form-access-encrypted-data>
+            </td>
+          </tr>
+        </table>
+
+      </mat-card-content>
+      <mat-card-actions >
+        <div>
+          <!-- Theme set in Custom themes.scss  -->
+          <button type="submit" mat-raised-button (click)= "submit()">Query</button>
+          <button type="submit" mat-raised-button (click)= "submitAdd()">Add</button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

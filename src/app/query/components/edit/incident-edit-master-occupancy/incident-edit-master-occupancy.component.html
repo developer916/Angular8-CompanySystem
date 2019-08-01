@@ -1,0 +1,47 @@
+<div style="text-align: center">
+
+  <app-navigation-header></app-navigation-header>
+  <app-navigation-menu></app-navigation-menu>
+
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <mat-card>
+      <mat-card-title class="query-card-title">Query Agency Personnel</mat-card-title>
+      <mat-card-content style="margin-top: 10px; margin-bottom: 0px;">
+        <div>
+          <h3>Occupancy Info</h3>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Pre-Plan #"
+                   [id]="'Session.OS.AM.QBEAgencyOccupancy.PrePlanNumber'"
+                   [formControlName]="'prePlanNumber'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Location"
+                   [id]="'Session.OS.AM.QBEAgencyOccupancy.Location'"
+                   [formControlName]="'location'"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="District"
+                        [id]="'Session.OS.AM.QBEAgencyOccupancy.District'"
+                        [formControlName]="'district'">
+              <mat-option *ngFor="let district of [1,2,3,4]" [value]="district">{{district}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="City"
+                   [id]="'Session.OS.AM.QBEAgencyOccupancy.City'"
+                   [formControlName]="'city'"/>
+          </mat-form-field>
+        </div>
+        <hr style="clear:both">
+      </mat-card-content>
+      <mat-card-actions style="margin-bottom: 15px;">
+        <div>
+          <button type="submit" mat-raised-button>Save</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="form-search-engine">
+  <mat-form-field>
+    <mat-label>Engine Type</mat-label>
+    <mat-select
+                [id]="'Session.OS.AM.QBEAgencyMaintenanceUnitHose.EngineCapability'"
+                [formControlName]="'engineType'">
+      <mat-option *ngFor="let engineType of ['Type 1', 'Type 2', 'Type 3']" [value]="engineType">{{engineType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

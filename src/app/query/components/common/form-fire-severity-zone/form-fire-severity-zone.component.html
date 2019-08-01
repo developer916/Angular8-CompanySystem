@@ -1,0 +1,10 @@
+<div class="form-fire-severity-zone">
+  <mat-form-field>
+    <mat-label>Fire Severity Zone</mat-label>
+    <mat-select
+                [id]="'Session.OS.PM.QBEOccupancy.FireSeverityZone'"
+                [formControlName]="'fireSeverityZone'">
+      <mat-option *ngFor="let fireSeverityZone of ['Other', 'None', 'Moderate']" [value]="fireSeverityZone" >{{fireSeverityZone}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
