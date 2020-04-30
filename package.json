@@ -41,7 +41,7 @@
     "font-awesome": "^4.7.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "mustache": "^3.0.1",
     "ng2-hallelujah": "https://github.com/pinksummit/HALlelujah/releases/download/0.2.0/ng2-hallelujah-0.2.0.tgz",
